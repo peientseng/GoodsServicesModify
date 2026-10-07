@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="21015曾沛恩">
-    <title>商品服務暨中英彙編異動標準作業規範 (格式規範v1.6)</title>
+    <title>商品服務暨中英彙編異動標準作業規範 (格式規範v2.0)</title>
     <style>
         :root {
             --primary-color: #1e3a8a;
@@ -44,7 +44,6 @@
             align-items: start;
         }
 
-        
         .sidebar-author {
             padding: 0.75rem 1.25rem;
             background: #f1f5f9;
@@ -121,10 +120,8 @@
         /* Main Content Container */
         .content-container {
             min-width: 0;
-            margin-top: 0;
         }
 
-        /* Header Card with Gradient Background from left to right */
         .header {
             background: linear-gradient(to right, #1e3a8a 0%, #2563eb 60%, #60a5fa 100%) !important;
             color: #ffffff;
@@ -137,15 +134,7 @@
         }
 
         .header-container {
-            width: 100%;
-        }
-
-        .header-title-row {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            max-width: 100%;
         }
 
         .header-title {
@@ -153,36 +142,6 @@
             font-weight: 800;
             letter-spacing: -0.02em;
             color: #ffffff;
-        }
-
-        .version-badge {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 0.25rem 0.6rem;
-            border-radius: 9999px;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .header-meta {
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            font-size: 0.95rem;
-            color: #e2e8f0;
-            font-weight: 500;
-        }
-
-        .author-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            background: rgba(255, 255, 255, 0.15);
-            padding: 0.3rem 0.75rem;
-            border-radius: 6px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .card {
@@ -206,56 +165,127 @@
             gap: 0.5rem;
         }
 
-        .subsection-title {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: #334155;
-            margin: 1.5rem 0 0.75rem 0;
-        }
-
-        /* Bullet List Formatting with Indentation */
-        .dot-list {
-            list-style: none;
-            padding-left: 1.5rem;
-            margin: 0.75rem 0;
-        }
-
-        .dot-list > li {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: #334155;
+        /* ============================================================
+           多層次清單定義 (依據 多層次清單定義.txt)
+           層次1: 國字大寫+頓號，不縮排 (h2.section-title)
+           層次2: 國字小寫+頓號，左側縮排1全形字元，文字凸排與頓號後第一個字元對齊
+           層次3: 國字小寫+括號，左側縮排2全形字元，文字凸排與右括號後第一個字元對齊
+           層次4: 阿拉伯數字+點號，左側縮排3全形字元，文字凸排與點號後第一個字元對齊
+           層次5: 阿拉伯數字+括號，左側縮排4全形字元，文字凸排與右括號後第一個字元對齊
+           層次6: 大寫英文+點號，左側縮排5全形字元，文字凸排與點號後第一個字元對齊
+           層次7: 大寫英文+括號，左側縮排6全形字元，文字凸排與右括號後第一個字元對齊
+           ============================================================ */
+        .lvl-item {
+            display: flex;
+            align-items: flex-start;
             line-height: 1.6;
+            margin-bottom: 0.35rem;
+            color: #1e293b;
         }
 
-        .dot-list > li::before {
-            content: "‧";
-            position: absolute;
-            left: 0;
-            top: 0;
-            font-weight: bold;
+        .lvl-2 {
+            display: flex;
+            align-items: flex-start;
+            margin-left: 1em;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 1.15rem;
+            font-weight: 700;
             color: var(--primary-color);
         }
-
-        .dot-list ul {
-            list-style: none;
-            padding-left: 1.5rem;
-            margin-top: 0.35rem;
+        .lvl-2 > .lvl-num {
+            flex-shrink: 0;
+            margin-right: 0.15em;
+        }
+        .lvl-2 > .lvl-text {
+            flex: 1;
         }
 
-        .dot-list ul > li {
-            position: relative;
-            padding-left: 1.25rem;
-            margin-bottom: 0.35rem;
+        .lvl-3 {
+            margin-left: 2em;
+            font-weight: 600;
+            margin-top: 0.75rem;
+            margin-bottom: 0.4rem;
+            color: #1e293b;
+        }
+        .lvl-3 > .lvl-num {
+            flex-shrink: 0;
+            margin-right: 0.25em;
+        }
+        .lvl-3 > .lvl-text {
+            flex: 1;
         }
 
-        .dot-list ul > li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            top: 0;
-            color: var(--text-muted);
+        .lvl-4 {
+            margin-left: 3em;
+            font-weight: 500;
+            margin-top: 0.4rem;
+            margin-bottom: 0.3rem;
+            color: #334155;
         }
+        .lvl-4 > .lvl-num {
+            flex-shrink: 0;
+            margin-right: 0.25em;
+        }
+        .lvl-4 > .lvl-text {
+            flex: 1;
+        }
+
+        .lvl-5 {
+            margin-left: 4em;
+            font-weight: normal;
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+            color: #334155;
+        }
+        .lvl-5 > .lvl-num {
+            flex-shrink: 0;
+            margin-right: 0.25em;
+        }
+        .lvl-5 > .lvl-text {
+            flex: 1;
+        }
+
+        .lvl-6 {
+            margin-left: 5em;
+            font-weight: normal;
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+            color: #334155;
+        }
+        .lvl-6 > .lvl-num {
+            flex-shrink: 0;
+            margin-right: 0.25em;
+        }
+        .lvl-6 > .lvl-text {
+            flex: 1;
+        }
+
+        .lvl-7 {
+            margin-left: 6em;
+            font-weight: normal;
+            margin-top: 0.25rem;
+            margin-bottom: 0.25rem;
+            color: #334155;
+        }
+        .lvl-7 > .lvl-num {
+            flex-shrink: 0;
+            margin-right: 0.25em;
+        }
+        .lvl-7 > .lvl-text {
+            flex: 1;
+        }
+
+        /* 縮排塊（如表格、圖片、複製塊在該層次下的縮排邊界） */
+        .lvl-block-2 { margin-left: 1em; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+        .lvl-block-3 { margin-left: 2em; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+        .lvl-block-4 { margin-left: 3em; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+        .lvl-block-5 { margin-left: 4em; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+        .lvl-block-6 { margin-left: 5em; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+        .lvl-block-7 { margin-left: 6em; margin-top: 0.5rem; margin-bottom: 0.75rem; }
+
+        .lvl-desc-3 { margin-left: calc(2em + 2.4em); margin-bottom: 0.5rem; color: #334155; line-height: 1.6; }
+        .lvl-desc-4 { margin-left: calc(3em + 1.8em); margin-bottom: 0.5rem; color: #334155; line-height: 1.6; }
 
         /* UI Button Badge */
         .ui-btn {
@@ -337,7 +367,7 @@
             background: #f8fafc;
             border: 1px solid var(--border-color);
             border-radius: 8px;
-            margin: 1rem 0;
+            margin: 0.75rem 0;
             overflow: hidden;
         }
 
@@ -412,37 +442,6 @@
             text-align: center;
         }
 
-        /* Hierarchy Tree List */
-        .field-hierarchy-list {
-            list-style-type: decimal;
-            padding-left: 1.5rem;
-            margin: 1rem 0;
-        }
-
-        .field-hierarchy-list > li {
-            margin-bottom: 1rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-
-        .field-hierarchy-list ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            margin-top: 0.35rem;
-            font-weight: normal;
-            color: #334155;
-        }
-
-        .field-hierarchy-list ul ul {
-            list-style-type: circle;
-            margin-top: 0.25rem;
-        }
-
-        .field-hierarchy-list li {
-            margin-bottom: 0.35rem;
-            line-height: 1.5;
-        }
-
         /* Images */
         .img-container {
             margin: 1.25rem 0;
@@ -462,19 +461,6 @@
             font-size: 0.85rem;
             color: var(--text-muted);
             margin-top: 0.4rem;
-        }
-
-        /* Download Links */
-        .download-link {
-            color: #2563eb;
-            text-decoration: underline;
-            font-weight: bold;
-            transition: color 0.15s ease;
-        }
-        .download-link:hover {
-            color: #1d4ed8;
-            background-color: #eff6ff;
-            border-radius: 2px;
         }
 
         /* Footnote Modal */
@@ -592,6 +578,19 @@
             }
         }
 
+        /* Download link styling */
+        .download-link {
+            color: var(--accent-color);
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.15s ease;
+        }
+        .download-link:hover {
+            color: #1d4ed8;
+            background-color: #eff6ff;
+            border-radius: 2px;
+        }
+
         /* Responsive */
         @media (max-width: 992px) {
             .site-container {
@@ -602,7 +601,7 @@
                 top: 0;
             }
         }
-    </style>
+</style>
 </head>
 <body>
 
@@ -620,10 +619,9 @@
             <ul class="sidebar-menu">
                 <li><a href="#sec-intro">壹、 簡介</a></li>
                 <li><a href="#sec-schedule">貳、 時程安排</a></li>
-                <li><a href="#sec-tasks">參、 各項執行事項說明</a></li>
-                <li><a href="#sec-review">肆、 申請表內容檢視與調整規範</a></li>
-                <li><a href="#sec-terms">伍、 異動用語表</a></li>
-                <li><a href="#sec-changelog">陸、 編修紀錄</a></li>
+                <li><a href="#sec-review">參、 申請表內容檢視與調整規範</a></li>
+                <li><a href="#sec-terms">肆、 異動用語表</a></li>
+                <li><a href="#sec-changelog">編修紀錄</a></li>
             </ul>
         </aside>
 
@@ -634,15 +632,15 @@
             <header class="header">
                 <div class="header-container">
                     <h1 class="header-title">經濟部智慧財產局｜S170商標行政系統</h1>
-                    <div class="header-subtitle">商品服務暨中英彙編異動標準作業規範(v1.6)</div>
+                    <div class="header-subtitle">商品服務暨中英彙編異動標準作業規範(v2.0)</div>
                 </div>
             </header>
 
             <!-- Section 1: 簡介 -->
             <section id="sec-intro" class="card">
                 <h2 class="section-title">壹、 簡介</h2>
-                <p>因應尼斯版本之定期修正，及回應外界的商品申請實際需求，爰收集前述修正/調整之商品(服務)資料後，異動S170商品(服務)的DB資料，更新後供外界民眾提出商標申請(S045)、查詢(資服組中英對照系統)及檢索系統(S282, S281)使用。</p>
-                <p style="margin-top: 0.75rem;">考量本定期異動業務對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，故訂定標準作業流程，期能減少人為疏忽造成之錯誤。</p>
+                <p>因應尼斯版本之定期修正，及回應外界的商品申請實際需求，爰收集前述修正/調整之商品(服務)資料後，異動S170商品(服務)的DB資料，更新後供外界民眾提出商標申請(S045)、查詢(資服組中英對照系統)及檢索系統(S282, S281)使用</p>
+                <p style="margin-top: 0.75rem;">考量本定期異動業務對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，故訂定標準作業流程，期能減少人為疏忽造成之錯誤</p>
             </section>
 
             <!-- Section 2: 時程安排 -->
@@ -652,536 +650,1102 @@
                 <table class="sop-table">
                     <thead>
                         <tr>
-                            <th style="width: 34%;">執行事項</th>
-                            <th style="width: 33%;">上半年</th>
-                            <th style="width: 33%;">下半年</th>
+                            <th style="width: 32%;">執行事項</th>
+                            <th style="width: 34%;">上半年</th>
+                            <th style="width: 34%;">下半年</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td><strong>匯出新興商品清冊</strong><button class="fn-btn" onclick="openModal(1)" title="清冊資料來源為外界民眾於S282查詢商品名稱時...">[1]</button></td>
-                            <td>04/01 匯出 10/01~03/31 清冊</td>
-                            <td>10/01 匯出 04/01~09/30 清冊</td>
+                            <td>匯出「新興商品清冊」<button class="fn-btn" onclick="openModal(1)" title="清冊資料來源為外界民眾於S282查詢商品名稱時...">[1]</button></td>
+                            <td>04/01匯出 (10/01~03/31清冊)</td>
+                            <td>10/01匯出 (04/01~09/30清冊)</td>
                         </tr>
                         <tr>
-                            <td><strong>各科品改人員提供異動申請表</strong><button class="fn-btn" onclick="openModal(2)" title="非硬性規定，係保障承辦人有足夠時間作業...">[2]</button></td>
-                            <td>05/10 前提供第一版<br>05/20 停收新需求</td>
-                            <td>11/10 前提供第一版<br>11/20 停收新需求</td>
+                            <td>各科品改人員提供異動申請表<button class="fn-btn" onclick="openModal(2)" title="非硬性規定，係保障承辦人有足夠時間作業...">[2]</button></td>
+                            <td>05/10前提供第一版<br>05/20前陸續提供<br>05/21~05/31僅可修正</td>
+                            <td>11/10前提供第一版<br>11/20前陸續提供<br>11/21~11/30僅可修正</td>
                         </tr>
                         <tr>
-                            <td><strong>異動文件作業</strong><button class="fn-btn" onclick="openModal(3)" title="非硬性規定，考量文件作業完成後才開始系統作業...">[3]</button></td>
+                            <td>異動文件作業<button class="fn-btn" onclick="openModal(3)" title="非硬性規定，考量文件作業完成後才開始系統作業...">[3]</button></td>
                             <td>收到申請表~05/31</td>
                             <td>收到申請表~11/30</td>
                         </tr>
                         <tr>
-                            <td><strong>系統作業</strong><button class="fn-btn" onclick="openModal(4)" title="非硬性規定，考量系統作業完成後...">[4]</button></td>
+                            <td>系統作業<button class="fn-btn" onclick="openModal(4)" title="非硬性規定，考量系統作業完成後...">[4]</button></td>
                             <td>異動文件完成~06/05</td>
                             <td>異動文件完成~12/05</td>
                         </tr>
                         <tr>
-                            <td><strong>公告文件作業</strong></td>
+                            <td>公告文件作業</td>
                             <td>公告文件完成~06/10</td>
                             <td>公告文件完成~12/10</td>
                         </tr>
                         <tr>
-                            <td><strong>上簽</strong><button class="fn-btn" onclick="openModal(6)" title="例如當06/10為星期五...">[6]</button></td>
-                            <td>06/10 前</td>
-                            <td>12/10 前</td>
+                            <td>上簽<button class="fn-btn" onclick="openModal(6)" title="例如當06/10為星期五...">[6]</button></td>
+                            <td>06/10前</td>
+                            <td>12/10前</td>
                         </tr>
                         <tr>
-                            <td><strong>預公告</strong></td>
+                            <td>預公告</td>
                             <td>06/16</td>
                             <td>12/16</td>
                         </tr>
                         <tr>
-                            <td><strong>公告</strong></td>
+                            <td>公告</td>
                             <td>07/01</td>
                             <td>01/01</td>
                         </tr>
                         <tr>
-                            <td><strong>加碼/移碼</strong></td>
+                            <td>加碼/移碼</td>
                             <td>公告後的假日</td>
                             <td>公告後的假日</td>
                         </tr>
                     </tbody>
                 </table>
-            </section>
 
-            <!-- Section 3: 各項執行事項說明 -->
-            <section id="sec-tasks" class="card">
-                <h2 class="section-title">參、 各項執行事項說明</h2>
-                
-                <!-- Sub-section 一 -->
-                <h3 class="subsection-title">一、 匯出「新興商品清冊」</h3>
-                <ul class="dot-list">
-                    <li><strong>原則：</strong>匯出「半年內」外部使用者於 S282 的檢索紀錄。由於檢索欄位可能包含無意義字串，需經人工剔除與清理後，僅保留具備商品名稱檢索價值之項目。</li>
-                    <li><strong>時程與資料涵蓋區間：</strong><button class="fn-btn" onclick="openModal(5)" title="07/01異動，匯出10/01至03/31(第四、一季)清冊...">[5]</button>
-                        <ul>
-                            <li><strong>上半年（07/01 異動）：</strong>04/01 匯出，涵蓋前一年 10/01 ~ 當年 03/31（第四、一季）。</li>
-                            <li><strong>下半年（01/01 異動）：</strong>10/01 匯出，涵蓋當年 04/01 ~ 09/30（第二、三季）。</li>
-                        </ul>
-                    </li>
-                    <li><strong>作業步驟：</strong>
-                        <ul>
-                            <li>點選 <span class="ui-btn">e網通</span> → <span class="ui-btn">系統專區</span> → <span class="ui-btn">商標遠端檢索系統_後台</span> → <span class="ui-btn">統計報表</span> → <span class="ui-btn">2.歷次新興商品名稱查詢次數統計報表</span>，轉跳至查詢統計介面。</li>
-                            <li>輸入查詢日期：10/01~03/31（上半年）或 04/01~09/30（下半年）。</li>
-                            <li>輸入條件：「查詢次數由大到小」。</li>
-                            <li>點選 <span class="ui-btn">匯出 EXCEL</span>。</li>
-                            <li>清理檔案，刪除無意義或不合適作為商品名稱之檢索詞。</li>
-                            <li>寄給各科品改人員參考，提供後續提報異動申請之依據。</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- Sub-section 二 -->
-                <h3 class="subsection-title">二、 各科品改人員提供異動申請表（<a href="https://docs.google.com/document/d/1b0NNifHiRiwJDGiSA4g_dxBwGcFy5s5e/edit?usp=drive_link&ouid=103799344129991318061&rtpof=true&sd=true" target="_blank" class="download-link">點此下載「異動申請表」空白例稿</a>）</h3>
-                <ul class="dot-list">
-                    <li><strong>時程：</strong>應於 05/10、11/10 前提供第一版，05/20、11/20 停收新需求。係考量此項作業涉及對外的商品異動公告，任何錯誤將會導致接下來半年公告之商品及服務有誤，須格外謹慎，故應保留後續足夠之檢查除錯作業時間，逾期原則上不再受理。</li>
-                    <li><strong>原則：</strong>
-                        <ul>
-                            <li>依規範之格式填寫申請表。</li>
-                            <li>檔名命名格式範例：`2-1101014-v1-王大明`（科別-7碼日期-版本-姓名）。</li>
-                            <li>收到各科申請表後請務必妥善存檔留存。</li>
-                            <li>各科品改人員提供之異動申請表，應先經各科科長確認無誤後，再彙整寄送。</li>
-                        </ul>
-                    </li>
-                    <li><strong>命名範例對照：</strong>
-                        <table class="sop-table" style="margin-top: 0.5rem; max-width: 650px;">
-                            <thead>
-                                <tr>
-                                    <th style="width: 40%;">情境</th>
-                                    <th style="width: 60%;">範例檔案名稱</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>110年10月14日 2科王大明送第1份申請書</td>
-                                    <td><code>2-1101014-v1-王大明</code></td>
-                                </tr>
-                                <tr>
-                                    <td>同日維護人員檢視後，提出錯誤處並回信</td>
-                                    <td><code>2-1101014-v1R-曾沛恩</code></td>
-                                </tr>
-                                <tr>
-                                    <td>2科王大明修正錯誤處後回信</td>
-                                    <td><code>2-1101014-v1.1-王大明</code></td>
-                                </tr>
-                                <tr>
-                                    <td>2科王大明提出第2份申請需求</td>
-                                    <td><code>2-1101014-v2-王大明</code></td>
-                                </tr>
-                                <tr>
-                                    <td>2科王大明經組長指示刪除某幾筆需求後回信</td>
-                                    <td><code>2-1101014-v2.1-王大明</code></td>
-                                </tr>
-                                <tr>
-                                    <td>2科科長通知上述兩份需求彙整為最終版本</td>
-                                    <td><code>2-1101014-final-王大明</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </li>
-                    <li><strong>‧ e-mail 通知範本參考：</strong></li>
-                </ul>
-
-                <!-- Copy Block for Email Template -->
-                <div class="copy-block">
-                    <div class="copy-block-header">
-                        <span>e-mail 通知範本：</span>
-                        <button class="copy-btn" onclick="copyText('email-tpl', this)">📋 複製</button>
-                    </div>
-                    <div id="email-tpl" class="copy-block-body">各科品改同仁，您好：
-
-本局預計於○年○月○日辦理「○年第○次商品及服務名稱定期異動」。
-
-如貴科有商品及服務名稱之新增、刪除或修正等需求，請於○年○月○日前，填具「異動需求申請表」（如附件），經科長核閱後回傳至本郵件信箱。
-
-為利後續資料彙整與公告作業，請務必依旨揭時限提供，感謝您的配合！</div>
+                <!-- Sub-section 一 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">一、</span>
+                    <span class="lvl-text">匯出「新興商品清冊」</span>
                 </div>
 
-                <!-- Sub-section 三 -->
-                <h3 class="subsection-title">三、 異動文件作業</h3>
-                <p>依照異動總表產出本次異動所需的所有資訊，詳細寫明所有異動的以下各項：</p>
-                <ul class="dot-list">
-                    <li><strong>系統作業所需資訊：</strong>
-                        <ul class="sub-num-list">
-                            <li>(1) 是否刪除</li>
-                            <li>(2) 是否隱藏</li>
-                            <li>(3) 商品/服務代碼</li>
-                            <li>(4) 商品/服務中文名稱</li>
-                            <li>(5) 商品/服務英文名稱</li>
-                            <li>(6) 尼斯碼(非必要)</li>
-                            <li>(7) 異動附註 <button class="fn-btn" onclick="openModal(9)" title="異動附註標準寫法詳參「用語表」">[9]</button></li>
-                            <li>(8) 異動系統操作步驟</li>
-                        </ul>
-                    </li>
-                    <li><strong>公告文件所需資訊：</strong>
-                        <ul class="sub-num-list">
-                            <li>(1) 商品名稱或組群(中文名稱)</li>
-                            <li>(2) 類別(2碼)</li>
-                            <li>(3) 組群代碼(4/6碼)</li>
-                            <li>(4) 修正事項 <button class="fn-btn" onclick="openModal(10)" title="修正事項公告標準寫法詳參「用語表」">[10]</button></li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- Sub-section 四 -->
-                <h3 class="subsection-title">四、 系統作業</h3>
-                <p>點選 <span class="ui-btn">檔案維護</span> → <span class="ui-btn">商品資料維護</span> → <span class="ui-btn">商品資料維護作業﹝修訂版本﹞</span>，依照異動文件的操作步驟逐步完成。</p>
-                <p><strong>規則與原則：</strong></p>
-                <ul class="dot-list">
-                    <li><strong>增碼取號：</strong><button class="fn-btn" onclick="openModal(11)" title="一旦取號，該號碼就無法移除...">[11]</button>
-                        <ul>
-                            <li><strong>原則：</strong>為避免手動輸入錯誤，以點選方式取號。
-                                <ul>
-                                    <li>欲取 9 碼 <code>050103007</code>：應點選 <code>05</code> → <code>0501</code> → <code>050103</code> → <span class="ui-btn">確定</span>。</li>
-                                    <li>欲取 10 碼 <code>050103001B</code>：應點選 <code>05</code> → <code>0501</code> → <code>050103</code> → <span class="ui-btn">10碼</span>。</li>
-                                </ul>
-                                <div class="img-container">
-                                    <img src="https://lh3.googleusercontent.com/d/1ms3bLhPXqSjoHRgBp6zVmtSdwkmu0GAN" alt="增碼取號-原則" class="doc-img">
-                                    <div class="img-caption">圖：增碼取號 - 原則示意圖</div>
-                                </div>
-                            </li>
-                            <li><strong>例外：</strong>當欲取號之處無 4/6 碼或小類組時（即 4/6 碼為 00，如 `0500`），手動輸入商品代碼<button class="fn-btn" onclick="openModal(12)" title="理論上當新增類別時...">[12]</button>。
-                                <div class="img-container">
-                                    <img src="https://lh3.googleusercontent.com/d/1KL3OBpOb96YqrquSWSysDrrJV5Z5x7XI" alt="增碼取號-例外" class="doc-img">
-                                    <div class="img-caption">圖：增碼取號 - 例外示意圖</div>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li><strong>刪除/隱藏：</strong>於畫面上點選 <span class="ui-btn">□刪除</span> 或 <span class="ui-btn">□隱藏</span> 即可。</li>
-                    <li><strong>類似關係：</strong>點選 <span class="ui-btn">類似關係</span>，即可進入類似關係維護頁面，將類似組群碼輸入即可<button class="fn-btn" onclick="openModal(13)" title="類似關係會影響到4/6碼之備註...">[13]</button>。</li>
-                    <li><strong>異動附註：</strong>點選 <span class="ui-btn">異動附註</span> 填入，以分號 `;` 切分。
-                        <div class="img-container">
-                            <img src="https://lh3.googleusercontent.com/d/1KqE2qNinu_hijnUHOQEmu9qmoTPjcfgb" alt="異動附註" class="doc-img">
-                            <div class="img-caption">圖：異動附註設置示意圖</div>
-                        </div>
-                    </li>
-                    <li><strong>預計公告日期：</strong>填入預計公告日期（格式如 `1150701`）<button class="fn-btn" onclick="openModal(14)" title="預計公告日期僅能指定每月1日、16日...">[14]</button>。</li>
-                    <li><strong>加/移碼（加碼、移碼作業）：</strong>
-                        <ul>
-                            <li>單日案件量建議在 8 萬筆左右，如利用假日維護則儘量在 5 萬筆以內，平日日間則維持在 5 千筆以下，避免系統過載。</li>
-                            <li><strong>先加碼、後移碼、最後刪碼：</strong>若有 1 組商品碼刪除，移至 2 組商品碼，務必先加碼後移碼。以下以 A 碼刪除，移至 B、C 二碼為例：
-                                <div class="img-group-container large-group">
-                                    <div class="img-group-row">
-                                        <div class="img-item">
-                                            <img src="https://lh3.googleusercontent.com/d/1c3U_2RPVnDc8jRntfUsK2IZIAVDllSO6" alt="目標1" class="doc-img">
-                                        </div>
-                                        <div class="img-arrow">➔</div>
-                                        <div class="img-item">
-                                            <img src="https://lh3.googleusercontent.com/d/1cnbHEbQcMor66rsQ-v1gfpvRMdCH72C0" alt="目標2" class="doc-img">
-                                        </div>
-                                    </div>
-                                    <div class="img-caption">圖：移碼目標結構</div>
-                                </div>
-
-                                <strong>錯誤作法「先移碼後加碼」：</strong>若先執行「移碼」，將使 A 的案件與 B 的案件混雜，又「移碼」後 A 碼之下已無案件，僅能自 B 碼「加碼」至 C 碼，將導致原 B 碼中的案件一併加入 C 碼中。
-                                <div class="img-group-container large-group">
-                                    <div class="img-group-row">
-                                        <div class="img-item">
-                                            <img src="https://lh3.googleusercontent.com/d/1c45u330S0IUIf1fQhTzSmZto8V0sdD-K" alt="先移碼後加碼1" class="doc-img">
-                                        </div>
-                                        <div class="img-arrow">➔</div>
-                                        <div class="img-item">
-                                            <img src="https://lh3.googleusercontent.com/d/12-YMDJmbLQwq-YwokojS29oJ5cmre7Bg" alt="先移碼後加碼2" class="doc-img">
-                                        </div>
-                                    </div>
-                                    <div class="img-caption">圖：錯誤作法「先移碼後加碼」流程示意</div>
-                                </div>
-
-                                <strong>正確作法「先加碼後移碼」：</strong>
-                                <div class="img-group-container large-group">
-                                    <div class="img-group-row">
-                                        <div class="img-item">
-                                            <img src="https://lh3.googleusercontent.com/d/1GmjRIC6Twdsjo7bSt0Ltn_WuQuGZhfif" alt="先加碼後移碼1" class="doc-img">
-                                        </div>
-                                        <div class="img-arrow">➔</div>
-                                        <div class="img-item">
-                                            <img src="https://lh3.googleusercontent.com/d/1eCIIzjIdPmV91dA5MZunJVsAE7-3icti" alt="先加碼後移碼2" class="doc-img">
-                                        </div>
-                                    </div>
-                                    <div class="img-caption">圖：正確作法「先加碼後移碼」流程示意</div>
-                                </div>
-                                <p style="margin-top: 0.5rem;">已有刪除註記之商品碼欲設定加/移碼時，系統將判斷該碼已刪除無法設定，雖理解上係「刪除後移至另一商品碼」，但操作步驟必須先做完加碼/移碼之設定後，才可註記刪除。</p>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- Sub-section 五 -->
-                <h3 class="subsection-title">五、 公告文件作業</h3>
-
-                <ul class="dot-list">
-                    <li><strong>公報檔（<a href="https://docs.google.com/document/d/1PwOl_piSc61Ll-HTOP1VOLGmSJA7cItN/edit?usp=drive_link&ouid=103799344129991318061&rtpof=true&sd=true" target="_blank" class="download-link">點此下載「本期異動內容」空白例稿</a>）：</strong>以此格式製作，並產出 PDF 檔。
-                        <div class="img-container">
-                            <img src="https://lh3.googleusercontent.com/d/15X2uuCO_WFMrIWIzSPeE3GKSSpx33WZP" alt="公報檔" class="doc-img">
-                            <div class="img-caption">圖：公報檔樣式範例</div>
-                        </div>
-                    </li>
-                    <li><strong>公告文字：</strong></li>
-                </ul>
-
-                <!-- Copy Blocks for Announcement Text -->
-                <div class="copy-block">
-                    <div class="copy-block-header">
-                        <span>標題：</span>
-                        <button class="copy-btn" onclick="copyText('ann-subject', this)">📋 複製</button>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">
+                        <div>情境與說明</div>
+                        <p style="margin-top: 0.25rem; font-weight: normal; color: #334155;">新興商品清冊的資料來源，為外界民眾於S282查詢商品名稱時，如輸入了非彙編之名稱，系統將記錄所輸入的商品名稱，並統計其輸入次數</p>
                     </div>
-                    <div id="ann-subject" class="copy-block-body">商標申請註冊指定使用之商品暨服務名稱及檢索參考資料異動公告</div>
                 </div>
 
-                <div class="copy-block">
-                    <div class="copy-block-header">
-                        <span>內文：</span>
-                        <button class="copy-btn" onclick="copyText('ann-body', this)">📋 複製</button>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">作業方式</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">E網通</span> → <span class="ui-btn">系統專區</span> → <span class="ui-btn">商標遠端檢索系統_後台</span> → <span class="ui-btn">資料查詢</span> → <span class="ui-btn">商品名稱查詢次數統計報表</span></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">輸入查詢日期<button class="fn-btn" onclick="openModal(5)" title="07/01異動，匯出10/01至03/31(第四、一季)清冊；01/01異動，匯出04/01至09/30(第二、三季)清冊">[5]</button>、僅顯示出現次數(含)以上、勾選新興商品名稱，點選 <span class="ui-btn">匯出EXCEL</span></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">將報表內商品依出現次數由多至少排序</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(三)</span>
+                    <div class="lvl-text">e-mail報表</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">正本：審查一科至審查四科品改、組長、副組長及、品推小組商品異動業務主辦人(現為李商標高級審查官宗仁)</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">副本：審查一科至審查四科科長</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">標題：</div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>標題：</span>
+                            <button class="copy-btn" onclick="copyText('email-emerging-subj', this)">📋 複製</button>
+                        </div>
+                        <div id="email-emerging-subj" class="copy-block-body">○/○/○至○/○/○(日期)新興商品名稱查詢次數統計</div>
                     </div>
-                    <div id="ann-body" class="copy-block-body">一、為使商品及服務分類更合時宜，統整參考市場最新趨勢，經檢討商標申請註冊指定使用之商品/服務名稱，總計增修○項、刪除○項，另增修○項組群/小類組名稱或備註事項（詳如附表）。
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">內文：</div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>內文：</span>
+                            <button class="copy-btn" onclick="copyText('email-emerging-body', this)">📋 複製</button>
+                        </div>
+                        <div id="email-emerging-body" class="copy-block-body">各位長官及品改同仁，
+
+一、本次商品異動作業即將開始，附件為○/○/○~○/○/○新興商品名稱查詢次數統計報表
+
+二、因本作業後續有明確預公告、申請送件系統資料更新、以及正式上線日期，且部分作業需假日執行，為保證流程順利進行，請同仁嚴格遵守以下時間安排，逾時不候：
+
+05月10日/11月10日：至少送出第一版異動申請表，以保證承辦人員有足夠時間作業，及與品改人員討論、修正異動需求
+05月20日/11月20日：停收新需求，僅調整原需求錯誤
+06月02日/12月02日：前的周五：完成異動內容、系統作業、公告文字等最終確認，不再調整
+06月02日/12月02日 前的周六、週日：系統異動作業
+06月09日/12月09日 前：完成所有公告所需文件(公報、公告稿、本次異動資料、歷次異動資料、opendata、中英對照、不可核收商品清單)
+06月10日/12月10日 前+周四之前：上簽
+06月16日/12月16日：預公告</div>
+                    </div>
+                </div>
+
+                <!-- Sub-section 二 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">二、</span>
+                    <span class="lvl-text">各科品改人員提供異動申請表-點此下載「<a href="https://docs.google.com/document/d/1b0NNifHiRiwJDGiSA4g_dxBwGcFy5s5e/edit?usp=drive_link&ouid=103799344129991318061&rtpof=true&sd=true" target="_blank" class="download-link">異動申請表</a>」空白例稿</span>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">
+                        <div>時程</div>
+                        <p style="margin-top: 0.25rem; font-weight: normal; color: #334155;">應於05/10、11/10前提供第一版，05/20、11/20停收新需求</p>
+                        <p style="margin-top: 0.25rem; font-weight: normal; color: #334155;">係考量此項作業涉及對外的商品異動公告，任何錯誤將會導致接下來半年公告之商品及服務有誤，須格外謹慎，故應保留後續足夠的檢查、系統資料調整及文件作業時間</p>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">作業方式</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">收申請表，並以固定方式重新命名，良好的命名規則中應有以下各項</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">部門或代號：此處建議用科別</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">日期：考量公部門通常使用民國年，建議用7碼數字</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(3)</span>
+                    <div class="lvl-text">內容描述：已知這類文件內容，故此處建議寫文件作者</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(4)</span>
+                    <div class="lvl-text">版本號：考量同日可能有多個往返，故應加入版本號區分</div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">A.</span>
+                    <div class="lvl-text">版本號建議至少有2個數值，第1位數表示明確版本推進，第2位數則是錯誤修正<button class="fn-btn" onclick="openModal(7)" title="因內容已非單純修正錯誤，故推進本版號第1個位數">[7]</button></div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">B.</span>
+                    <div class="lvl-text">最終版則用final</div>
+                </div>
+
+                <div class="lvl-block-5">
+                    <p style="font-weight: 600; margin-bottom: 0.35rem;">例如：</p>
+                    <table class="sop-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 50%;">情境</th>
+                                <th style="width: 50%;">範例檔案名稱</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>審查3科陳杏映，於115年6月5日寄出第1版</td>
+                                <td><code>審3科_1150605_陳杏映_v1.0</code></td>
+                            </tr>
+                            <tr>
+                                <td>維護人員曾沛恩，於當日檢視後修正用語及錯誤</td>
+                                <td><code>審3科_1150605_曾沛恩_v1.1</code></td>
+                            </tr>
+                            <tr>
+                                <td>審查3科陳杏映，於115年6月6日檢視後，又更正部分錯誤</td>
+                                <td><code>審3科_1150605_陳杏映_v1.2</code></td>
+                            </tr>
+                            <tr>
+                                <td>審查3科陳杏映，於115年6月8日再增加新需求<button class="fn-btn" onclick="openModal(7)" title="因內容已非單純修正錯誤，故推進本版號第1個位數">[7]</button></td>
+                                <td><code>審3科_1150608_陳杏映_v2.0</code></td>
+                            </tr>
+                            <tr>
+                                <td>維護人員曾沛恩，於115年6月8日視後修正用語及錯誤，並與v1.2合併</td>
+                                <td><code>審3科_1150605_曾沛恩_v2.1</code></td>
+                            </tr>
+                            <tr>
+                                <td>確認無誤且已不再追加需求，將「審3科_1150605_曾沛恩_v2.1」改為最終版</td>
+                                <td><code>審3科_1150605_曾沛恩_final</code></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">按用語表以固定格式重新編寫申請表，並回復品改同仁確認<button class="fn-btn" onclick="openModal(8)" title="詳參「申請表內容檢視與調整規範」">[8]</button></div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">因品改人員定期更換，且半年才辦理一次異動，難要求品改同仁完全依循特定規則撰寫，為避免錯誤，務必檢視同仁寄來的申請表後，依理解自行撰寫一次需求，並回復品改同仁確認理解是否有誤</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">若為新增需求，併入原申請表整合成該科的完整需求</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">向所有商品異動相關人員確認最終版本</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">5.</span>
+                    <div class="lvl-text">將各科最後一版的需求彙整為異動總表</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">6.</span>
+                    <div class="lvl-text">e-mail寄給商品異動相關人確認無誤</div>
+                </div>
+
+                <!-- Sub-section 三 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">三、</span>
+                    <span class="lvl-text">異動文件作業</span>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">依照異動總表產出本次異動所需的所有資訊</div>
+                </div>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">詳細寫明所有異動的以下各項</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">系統作業所需資訊</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">是否刪除</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">是否隱藏</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(3)</span>
+                    <div class="lvl-text">商品/服務代碼</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(4)</span>
+                    <div class="lvl-text">商品/服務中文名稱</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(5)</span>
+                    <div class="lvl-text">商品/服務英文名稱</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(6)</span>
+                    <div class="lvl-text">尼斯碼(非必要)</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(7)</span>
+                    <div class="lvl-text">異動附註<button class="fn-btn" onclick="openModal(9)" title="異動附註標準寫法詳參「用語表」">[9]</button></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">公告文件所需資訊</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">商品名稱或組群(中文名稱)</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">類別(2碼)</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(3)</span>
+                    <div class="lvl-text">組群代碼(4/6碼)</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(4)</span>
+                    <div class="lvl-text">修正事項<button class="fn-btn" onclick="openModal(10)" title="修正事項公告標準寫法詳參「用語表」">[10]</button></div>
+                </div>
+
+                <!-- Sub-section 四 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">四、</span>
+                    <span class="lvl-text">系統作業</span>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">檔案維護</span> → <span class="ui-btn">商品資料維護</span> → <span class="ui-btn">商品資料維護作業﹝修訂版本﹞</span></div>
+                </div>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">依照異動文件的操作步驟逐步完成</div>
+                </div>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(三)</span>
+                    <div class="lvl-text">規則與原則</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">增碼取號<button class="fn-btn" onclick="openModal(11)" title="一旦取號，該號碼就無法移除...">[11]</button></div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">原則：為避免手動輸入錯誤，以 <strong>點選</strong> 方式取號</div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">A.</span>
+                    <div class="lvl-text">欲取9碼 <code>050103007</code>：應點選 <code>05</code> → <code>0501</code> → <code>050103</code> → <span class="ui-btn">確定</span></div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">B.</span>
+                    <div class="lvl-text">欲取9碼 <code>050103001B</code>：應點選 <code>05</code> → <code>0501</code> → <code>050103</code> → <span class="ui-btn">10碼</span></div>
+                </div>
+                <div class="lvl-block-5">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1ms3bLhPXqSjoHRgBp6zVmtSdwkmu0GAN" alt="增碼取號-原則" class="doc-img">
+                        <div class="img-caption">圖：增碼取號 - 原則示意圖</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">例外：新增組群後，該組群未細分小類組<button class="fn-btn" onclick="openModal(12)" title="理論上當新增類別時，也會出現無群組...">[12]</button></div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">A.</span>
+                    <div class="lvl-text">部分組群因業務考量未細分小類組，故其第5、6碼應為「00」</div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">B.</span>
+                    <div class="lvl-text">因新增組群中尚無小類組，一旦於小類組區點選新增，將會新增「01」小類組</div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">C.</span>
+                    <div class="lvl-text">此時僅能直接輸入商品代碼後點選新增</div>
+                </div>
+                <div class="lvl-block-5">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1KL3OBpOb96YqrquSWSysDrrJV5Z5x7XI" alt="增碼取號-例外" class="doc-img">
+                        <div class="img-caption">圖：增碼取號 - 例外示意圖</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">刪除、隱藏</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">直接勾選核取框即可，其中「刪除」資料並不會真正刪除，僅是註記刪除，透過系統規則於檢索及編碼時排除</div>
+                </div>
+
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">類似關係<button class="fn-btn" onclick="openModal(13)" title="類似關係會影響到4/6碼之備註，需特別注意">[13]</button></div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">位於類似組全對照維護表(修訂版本)頁籤</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">僅需於其中一方建立類似關係即可</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(3)</span>
+                    <div class="lvl-text">類似關係的雙方均為公開碼時，此類似關係為公開；任一方為隱藏碼，則類似關係為隱藏</div>
+                </div>
+
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">異動附註</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">寫法詳見「申請表內容檢視與調整規範」、及「異動用語表」</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">盡量留存過去備註，並將新的備註寫在前方</div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1KqE2qNinu_hijnUHOQEmu9qmoTPjcfgb" alt="異動附註" class="doc-img">
+                        <div class="img-caption">圖：異動附註設置示意圖</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">5.</span>
+                    <div class="lvl-text">修改預計公告日期<button class="fn-btn" onclick="openModal(14)" title="預計公告日期僅能指定每月1日、16日...">[14]</button></div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">全部完成後，將維護介面最上方預計公告日期調整為01/01或07/01，並點選存檔</div>
+                </div>
+
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">6.</span>
+                    <div class="lvl-text">
+                        <div>移碼</div>
+                        <p style="margin-top: 0.25rem; font-weight: normal; color: #334155;">本作業影響非常大，以下3規則務必遵守</p>
+                    </div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">刪除商品碼必須搭配移碼，需在新版商品暨服務清單上線後，才可執行移碼作業</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">目前本作業對系統負擔較大，單日移碼案件數約可達8萬筆</div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">A.</span>
+                    <div class="lvl-text">以安排於假日作業為原則，且盡可能安排在單日5萬筆左右</div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">B.</span>
+                    <div class="lvl-text">若該次移碼數量過多需安排平日作業，為維持上班期間系統正常運作，應設定單日5千筆左右以確保上班時段前已執行完畢</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(3)</span>
+                    <div class="lvl-text"><strong>先加碼、後移碼、最後刪碼</strong></div>
+                </div>
+                <div class="lvl-item lvl-6">
+                    <span class="lvl-num">A.</span>
+                    <div class="lvl-text">若有1組商品碼刪除，移至2組商品碼，務必先加碼後移碼。以下以A碼刪除，移至B、C二碼為例：</div>
+                </div>
+                <div class="lvl-item lvl-7">
+                    <span class="lvl-num">(A)</span>
+                    <div class="lvl-text"><strong>目標</strong></div>
+                </div>
+                <div class="lvl-block-7">
+                    <div class="img-group-container">
+                        <div class="img-group-row">
+                            <div class="img-item">
+                                <img src="https://lh3.googleusercontent.com/d/1c3U_2RPVnDc8jRntfUsK2IZIAVDllSO6" alt="目標1" class="doc-img">
+                            </div>
+                            <div class="img-arrow">➔</div>
+                            <div class="img-item">
+                                <img src="https://lh3.googleusercontent.com/d/1cnbHEbQcMor66rsQ-v1gfpvRMdCH72C0" alt="目標2" class="doc-img">
+                            </div>
+                        </div>
+                        <div class="img-caption">圖：移碼目標結構</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-7">
+                    <span class="lvl-num">(B)</span>
+                    <div class="lvl-text"><strong>錯誤作法「先移碼後加碼」：</strong>若先執行「移碼」，將使A的案件與B的案件混雜，又「移碼」後A碼之下已無案件，僅能自B碼「加碼」至C碼，將導致原B碼中的案件一併加入C碼中</div>
+                </div>
+                <div class="lvl-block-7">
+                    <div class="img-group-container">
+                        <div class="img-group-row">
+                            <div class="img-item">
+                                <img src="https://lh3.googleusercontent.com/d/1c45u330S0IUIf1fQhTzSmZto8V0sdD-K" alt="先移碼後加碼1" class="doc-img">
+                            </div>
+                            <div class="img-arrow">➔</div>
+                            <div class="img-item">
+                                <img src="https://lh3.googleusercontent.com/d/12-YMDJmbLQwq-YwokojS29oJ5cmre7Bg" alt="先移碼後加碼2" class="doc-img">
+                            </div>
+                        </div>
+                        <div class="img-caption">圖：錯誤作法「先移碼後加碼」流程示意</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-7">
+                    <span class="lvl-num">(C)</span>
+                    <div class="lvl-text"><strong>正確作法「先加碼後移碼」：</strong></div>
+                </div>
+                <div class="lvl-block-7">
+                    <div class="img-group-container">
+                        <div class="img-group-row">
+                            <div class="img-item">
+                                <img src="https://lh3.googleusercontent.com/d/1GmjRIC6Twdsjo7bSt0Ltn_WuQuGZhfif" alt="先加碼後移碼1" class="doc-img">
+                            </div>
+                            <div class="img-arrow">➔</div>
+                            <div class="img-item">
+                                <img src="https://lh3.googleusercontent.com/d/1eCIIzjIdPmV91dA5MZunJVsAE7-3icti" alt="先加碼後移碼2" class="doc-img">
+                            </div>
+                        </div>
+                        <div class="img-caption">圖：正確作法「先加碼後移碼」流程示意</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-7">
+                    <span class="lvl-num">(D)</span>
+                    <div class="lvl-text">已有刪除註記之商品碼欲設定加/移碼時，系統將判斷該碼已刪除無法設定，雖理解上係「刪除後移至另一商品碼」，但操作步驟必須先做完加碼/移碼之設定後，才可註記刪除</div>
+                </div>
+
+                <!-- Sub-section 五 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">五、</span>
+                    <span class="lvl-text">公告文件作業</span>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">公報檔-點此下載「<a href="https://docs.google.com/document/d/1PwOl_piSc61Ll-HTOP1VOLGmSJA7cItN/edit?usp=drive_link&ouid=103799344129991318061&rtpof=true&sd=true" target="_blank" class="download-link">本期異動內容</a>」空白例稿</div>
+                </div>
+                <div class="lvl-block-3">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/15X2uuCO_WFMrIWIzSPeE3GKSSpx33WZP" alt="公報檔" class="doc-img">
+                        <div class="img-caption">圖：公報檔樣式範例</div>
+                    </div>
+                    <p style="color: #334155;">以此格式製作，並產出PDF檔</p>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">公告文字</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">標題：</div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>標題：</span>
+                            <button class="copy-btn" onclick="copyText('ann-subject', this)">📋 複製</button>
+                        </div>
+                        <div id="ann-subject" class="copy-block-body">商標申請註冊指定使用之商品暨服務名稱及檢索參考資料異動公告</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">內文：</div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>內文：</span>
+                            <button class="copy-btn" onclick="copyText('ann-body', this)">📋 複製</button>
+                        </div>
+                        <div id="ann-body" class="copy-block-body">一、為使商品及服務分類更合時宜，統整參考市場最新趨勢，經檢討商標申請註冊指定使用之商品/服務名稱，總計增修○項、刪除○項，另增修○項組群/小類組名稱或備註事項（詳如附表）。
 
 二、以上異動將自○年○月○日起實施。商標電子申請系統建置之「指定使用商品/服務類別及名稱」將同步更新（有關系統資料正式更新時程，以本局資訊室公告為準）。
 
 三、申請人如希望運用「快軌機制」，透過商標電子申請系統申請註冊前，請確實下載最新異動內容，以避免申請書記載之指定使用商品/服務名稱與電子申請系統建置內容不同，而無法符合「快軌機制」條件及享有減收規費之優惠。
 
 四、自即日起，「商標申請註冊指定使用之商品/服務名稱（異動後新版本）」之全部類別文檔，可於商標檢索系統之「商品及服務名稱分類查詢」下載，歡迎各界參考運用。</div>
-                </div>
-
-                <div class="copy-block">
-                    <div class="copy-block-header">
-                        <span>附件名稱：</span>
-                        <button class="copy-btn" onclick="copyText('ann-attach', this)">📋 複製</button>
                     </div>
-                    <div id="ann-attach" class="copy-block-body">異動內容（將公告於○年○月○日出版之第○卷第○期商標公報）.pdf</div>
                 </div>
 
-                <ul class="dot-list">
-                    <li><strong>公告用圖片：</strong>
-                        <div class="img-container">
-                            <img src="https://lh3.googleusercontent.com/d/11WrGBt3HbKj_5Ti0bn01rpCADiKYeuWg" alt="公告用圖片" class="doc-img">
-                            <div class="img-caption">圖：公告用圖片範例</div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">附件：</div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>附件：</span>
+                            <button class="copy-btn" onclick="copyText('ann-attach', this)">📋 複製</button>
                         </div>
-                    </li>
-                    <li><strong>可公開商品暨服務代碼清冊、商品暨服務中英對照檔案：</strong>
-                        <ul>
-                            <li>點選 <span class="ui-btn">檔案維護</span> → <span class="ui-btn">商品資料維護</span> → <span class="ui-btn">商品資料維護作業﹝修訂版本﹞</span>。</li>
-                            <li>點選 <span class="ui-btn">匯出Excel</span>，因資料量較龐大需等待數分鐘，勿重複點選。</li>
-                            <li><strong>可公開商品暨服務代碼清冊：</strong>保留公開碼的全碼、中文、英文，寄給申辦系統群承辦人。</li>
-                            <li><strong>商品暨服務中英對照：</strong>保留公開碼的4/6碼、中文、英文，寄給中英對照系統承辦人。</li>
-                        </ul>
-                    </li>
-                    <li><strong>歷次異動資料、開放資料檔案：</strong>
-                        <ul>
-                            <li>此二檔案係所有歷年的異動紀錄，其中「歷次異動資料」依類別分為 45 個檔案、「開放資料」則將 45 類依序合併在同一檔案中。</li>
-                            <li><strong>歷次異動資料：</strong>開啟前一期歷次異動資料，將本期異動紀錄填入表格最上方，寄給本組局網站維護人員。</li>
-                            <li><strong>開放資料檔案：</strong>將「歷次異動資料」表格中各欄位以逗點分隔，製作成 CSV 檔，並將所有類別資料合併為單一檔案，寄給中英對照系統承辦人。</li>
-                        </ul>
-                    </li>
-                    <li><strong>商標資料檢索服務商品及服務名稱分類查詢：</strong>
-                        <ul>
-                            <li>將異動的系統作業全數完成後，先開啟 S282 → 商品服務名稱分類查詢頁面作為預備動作。</li>
-                            <li>點選 <span class="ui-btn">e網通</span> → <span class="ui-btn">系統專區</span> → <span class="ui-btn">商標遠端檢索系統_後台</span> → <span class="ui-btn">資料維護</span> → <span class="ui-btn">6.共用代碼檔維護作業</span>。</li>
-                            <li>點選 <span class="ui-btn">BUTTON_CONTROL按鈕顯示控管</span>，於彈出視窗下方點選 <code>printAllGoodsCodeByA</code> 處，可將代碼值相關資訊帶入上方控制參數調整欄位。
-                                <div class="img-container">
-                                    <img src="https://lh3.googleusercontent.com/d/1HbtBVZdy03Wo3Gs_T6ve9IQq43zsQqHV" alt="BUTTON_CONTROL按鈕顯示控管" class="doc-img">
-                                    <div class="img-caption">圖：BUTTON_CONTROL 按鈕顯示控管設定畫面</div>
-                                </div>
-                            </li>
-                            <li>點選 <span class="ui-btn">修改</span>，前端顯示調整為顯示後，點選 <span class="ui-btn">確定</span>。</li>
-                            <li>立刻重新整理 S282 視窗，可看到畫面中多出 <span class="ui-btn">下載新商品服務名稱全類按鈕</span>。
-                                <div class="img-container">
-                                    <img src="https://lh3.googleusercontent.com/d/1Gqn8ugpefyKbrDlxmal840pLn2K5YUdi" alt="下載新商品服務名稱全類按鈕" class="doc-img">
-                                    <div class="img-caption">圖：S282 前端顯示全類下載按鈕</div>
-                                </div>
-                            </li>
-                            <li>將原排序、筆畫排序之 WORD 檔下載後，立刻將 BUTTON_CONTROL 按鈕顯示控管功能調整回隱藏<button class="fn-btn" onclick="openModal(15)" title="在尚未正式預公告前...">[15]</button>。</li>
-                            <li>寄給品推小組承辦人員。</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <!-- Sub-section 六 -->
-                <h3 class="subsection-title">六、 上簽</h3>
-                <p>選擇便簽(二層決)。</p>
-
-                <!-- Copy Block for Official Document Text -->
-                <div class="copy-block">
-                    <div class="copy-block-header">
-                        <span>公文內文：</span>
-                        <button class="copy-btn" onclick="copyText('doc-body', this)">📋 複製</button>
+                        <div id="ann-attach" class="copy-block-body">異動內容（將公告於○年○月○日出版之第○卷第○期商標公報）.pdf</div>
                     </div>
-                    <div id="doc-body" class="copy-block-body">一、依據商標法施行細則第19條第2項規定辦理。
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(三)</span>
+                    <div class="lvl-text">公告用圖片</div>
+                </div>
+                <div class="lvl-block-3">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/11WrGBt3HbKj_5Ti0bn01rpCADiKYeuWg" alt="公告用圖片" class="doc-img">
+                        <div class="img-caption">圖：公告用圖片範例</div>
+                    </div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(四)</span>
+                    <div class="lvl-text">可公開商品暨服務代碼清冊、商品暨服務中英對照檔案</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">檔案維護</span> → <span class="ui-btn">商品資料維護</span> → <span class="ui-btn">商品資料維護作業﹝修訂版本﹞</span></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">匯出Excel</span>，因資料量較龐大需等待數分鐘，勿重複點選</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">將檔案內容分別做以下處理</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">可公開商品暨服務代碼清冊：保留公開碼的全碼、中文、英文，寄給申辦系統群承辦人</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">商品暨服務中英對照：保留公開碼的4/6碼、中文、英文，寄給中英對照系統承辦人</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(五)</span>
+                    <div class="lvl-text">
+                        <div>歷次異動資料、開放資料檔案</div>
+                        <p style="margin-top: 0.25rem; font-weight: normal; color: #334155;">此二檔案係所有歷年的異動紀錄，其中「歷次異動資料」依類別分為45個檔案、「開放資料」則將45類依序合併在同一檔案中</p>
+                        <p style="margin-top: 0.25rem; font-weight: normal; color: #334155;">將檔案內容分別做以下處理</p>
+                    </div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">歷次異動資料：開啟前一期歷次異動資料，將本期異動紀錄填入表格最上方，寄給本組局網站維護人員</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">開放資料檔案：將「歷次異動資料」表格中各欄位以逗點分隔，製作成CSV檔，並將所有類別資料合併為單一檔案，寄給中英對照系統承辦人</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(六)</span>
+                    <div class="lvl-text">商標資料檢索服務商品及服務名稱分類查詢</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">將異動的系統作業全數完成後，先開啟S282→商品服務名稱分類查詢頁面作為預備動作</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">e網通</span> → <span class="ui-btn">系統專區</span> → <span class="ui-btn">商標遠端檢索系統_後台</span> → <span class="ui-btn">資料維護</span> → <span class="ui-btn">6.共用代碼檔維護作業</span></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">BUTTON_CONTROL按鈕顯示控管</span>，於彈出視窗下方點選 <code>printAllGoodsCodeByA</code> 處，可將代碼值相關資訊帶入上方控制參數調整欄位</div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1HbtBVZdy03Wo3Gs_T6ve9IQq43zsQqHV" alt="BUTTON_CONTROL按鈕顯示控管" class="doc-img">
+                        <div class="img-caption">圖：BUTTON_CONTROL 按鈕顯示控管設定畫面</div>
+                    </div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">修改</span>，前端顯示調整為顯示後，點選 <span class="ui-btn">確定</span></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">5.</span>
+                    <div class="lvl-text">立刻重新整理S282視窗，可看到畫面中多出 <span class="ui-btn">下載新商品服務名稱全類按鈕</span></div>
+                </div>
+                <div class="lvl-block-4">
+                    <div class="img-container">
+                        <img src="https://lh3.googleusercontent.com/d/1Gqn8ugpefyKbrDlxmal840pLn2K5YUdi" alt="下載新商品服務名稱全類按鈕" class="doc-img">
+                        <div class="img-caption">圖：S282 前端顯示全類下載按鈕</div>
+                    </div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">6.</span>
+                    <div class="lvl-text">將原排序、筆畫排序之WORD檔下載後，立刻將BUTTON_CONTROL按鈕顯示控管功能調整回隱藏<button class="fn-btn" onclick="openModal(15)" title="在尚未正式預公告前，不應讓外界看到相關資訊...">[15]</button></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">7.</span>
+                    <div class="lvl-text">寄給品推小組承辦人員</div>
+                </div>
+
+                <!-- Sub-section 六 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">六、</span>
+                    <span class="lvl-text">上簽</span>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">選擇便簽(二層決)</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">公文內文</div>
+                </div>
+                <div class="lvl-block-3">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>公文內文：</span>
+                            <button class="copy-btn" onclick="copyText('doc-body', this)">📋 複製</button>
+                        </div>
+                        <div id="doc-body" class="copy-block-body">一、依據商標法施行細則第19條第2項規定辦理。
 
 二、因應商品及服務分類暨相互檢索參考資料之定期修正將於○年○月○日公告，謹陳異動後「商標資料檢索服務商品及服務名稱分類查詢」資料(附件1)。
 
 三、擬奉核後於○年○月○日局網商標布告欄發布預公告(稿如附件2)，及提供商品暨服務異動資料(附件3)檔案下載，俾利外界用戶預作準備，文存查。</div>
+                    </div>
                 </div>
 
-                <p style="margin-top: 1rem;"><strong>公文附件：</strong></p>
-                <ul class="dot-list">
-                    <li>商標資料檢索服務商品及服務名稱分類查詢。</li>
-                    <li>預公告稿：</li>
-                </ul>
-
-                <!-- Copy Blocks for Pre-announcement Draft -->
-                <div class="copy-block">
-                    <div class="copy-block-header">
-                        <span>預公告稿 - 標題：</span>
-                        <button class="copy-btn" onclick="copyText('pre-subject', this)">📋 複製</button>
-                    </div>
-                    <div id="pre-subject" class="copy-block-body">商標申請註冊指定使用之商品暨服務名稱及檢索參考資料異動</div>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(三)</span>
+                    <div class="lvl-text">公文附件</div>
                 </div>
-
-                <div class="copy-block">
-                    <div class="copy-block-header">
-                        <span>預公告稿 - 內文：</span>
-                        <button class="copy-btn" onclick="copyText('pre-body', this)">📋 複製</button>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">商標資料檢索服務商品及服務名稱分類查詢</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">預公告稿：</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">標題</div>
+                </div>
+                <div class="lvl-block-5">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>預公告稿 - 標題：</span>
+                            <button class="copy-btn" onclick="copyText('pre-subject', this)">📋 複製</button>
+                        </div>
+                        <div id="pre-subject" class="copy-block-body">商標申請註冊指定使用之商品暨服務名稱及檢索參考資料異動</div>
                     </div>
-                    <div id="pre-body" class="copy-block-body">一、為使商品及服務分類更合時宜，統整參考市場最新趨勢，經檢討商標申請註冊指定使用之商品/服務名稱，總計增修○項、刪除○項，另增修○項組群／小類組名稱或備註事項（詳如附表）。
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
+                    <div class="lvl-text">內文</div>
+                </div>
+                <div class="lvl-block-5">
+                    <div class="copy-block">
+                        <div class="copy-block-header">
+                            <span>預公告稿 - 內文：</span>
+                            <button class="copy-btn" onclick="copyText('pre-body', this)">📋 複製</button>
+                        </div>
+                        <div id="pre-body" class="copy-block-body">一、為使商品及服務分類更合時宜，統整參考市場最新趨勢，經檢討商標申請註冊指定使用之商品/服務名稱，總計增修○項、刪除○項，另增修○項組群／小類組名稱或備註事項（詳如附表）。
 
 二、以上異動將自○年○月○日起實施。商標電子申請系統建置之「指定使用商品/服務類別及名稱」將同步更新（有關系統資料正式更新時程，以本局資訊室公告為準）。
 
 三、申請人如希望運用「快軌機制」，透過商標電子申請系統申請註冊前，請確實下載最新異動內容，以避免申請書記載之指定使用商品／服務名稱與電子申請系統建置內容不同，而無法符合「快軌機制」條件及享有減收規費之優惠。
 
 四、自即日起，「商標申請註冊指定使用之商品/服務名稱（異動後新版本）」之全部類別文檔，可於商標檢索系統之「商品及服務名稱分類查詢」下載，歡迎各界參考運用。</div>
+                    </div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">商品暨服務異動資料(即公報檔)</div>
                 </div>
 
-                <ul class="dot-list">
-                    <li>商品暨服務異動資料(即公報檔)。</li>
-                </ul>
+                <!-- Sub-section 七 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">七、</span>
+                    <span class="lvl-text">預公告</span>
+                </div>
 
-                <!-- Sub-section 七 -->
-                <h3 class="subsection-title">七、 預公告</h3>
-                <ul class="dot-list">
-                    <li><strong>情境與說明：</strong>每年 6 月 16 日、12 月 16 日於局網站預公告。張貼日期、公開起日設定為上午 8:30，公告起訖為一年後同日的 23:59。另需將 S282 下載新商品服務名稱全類按鈕功能重新打開。</li>
-                    <li><strong>作業方式：</strong>
-                        <ul>
-                            <li>於局網站張貼預公告內容。</li>
-                            <li>自局網站後台，點選 <span class="ui-btn">資料管理</span> → <span class="ui-btn">資料上稿</span>，右側彈出資料上稿選單。</li>
-                            <li>點選 <span class="ui-btn">資料上稿</span> → <span class="ui-btn">經濟部智慧財產局</span> → <span class="ui-btn">最新消息</span> → <span class="ui-btn">布告欄</span>，轉跳至資料上稿頁面。</li>
-                            <li>點擊 <span class="ui-btn">新增上稿</span>，設定預公開當日上午 08:30 由系統自動於指定時間發布。</li>
-                            <li>當日上午到達辦公室後，即可再次開啟 S282 下載新商品服務名稱全類按鈕。</li>
-                        </ul>
-                    </li>
-                </ul>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">情境與說明</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">每年6月16日、12月16日於局網站預公告</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">張貼日期、公開起日設定為上午8:30，公告起訖為一年後同日的23:59</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">另需將S282下載新商品服務名稱全類按鈕功能重新打開</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">作業方式</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">於局網站張貼預公告內容</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">自局網站後台，點選 <span class="ui-btn">資料管理</span> → <span class="ui-btn">資料上稿</span>，右側彈出資料上稿選單</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">點選 <span class="ui-btn">資料上稿</span> → <span class="ui-btn">經濟部智慧財產局</span> → <span class="ui-btn">最新消息</span> → <span class="ui-btn">布告欄</span>，轉跳至資料上稿頁面</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">點擊 <span class="ui-btn">新增上稿</span>，設定預公開當日上午08:30由系統自動於指定時間發布</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">5.</span>
+                    <div class="lvl-text">當日上午到達辦公室後，即可再次開啟S282下載新商品服務名稱全類按鈕</div>
+                </div>
+
+                <!-- Sub-section 八 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">八、</span>
+                    <span class="lvl-text">公告</span>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">公告日當日即可將S282下載新商品服務名稱全類按鈕關閉</div>
+                </div>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">判斷是否為快軌時點為送件後的1個月，故於新舊商品轉換期間，可能有部分案件會因此被判斷為非快軌，審查科有發現時需調整之</div>
+                </div>
             </section>
 
-            <!-- Section 4: 申請表內容檢視與調整規範 -->
+            <!-- Section 3: 申請表內容檢視與調整規範 (層次1: 參) -->
             <section id="sec-review" class="card">
-                <h2 class="section-title">肆、 申請表內容檢視與調整規範</h2>
-                <p>每半年之商品/服務定期異動業務，對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，其中又以異動文件之判讀、除錯與處理最為繁瑣。故除訂定標準作業流程外，針對承辦人異動文件作業進行標準性規範，期能降低未來承辦人出錯機率與交接之困難度。</p>
-                <p style="margin-top: 0.75rem;">本章分為「判讀申請表之需求與除錯」、「申請表填寫規範」2 大部分，收到申請表後，應逐一檢查以下各項：</p>
+                <h2 class="section-title">參、 申請表內容檢視與調整規範</h2>
+                <p>每半年之商品/服務定期異動業務，對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，其中又以異動文件之判讀、除錯與處理最為繁瑣。故除訂定標準作業流程外，針對承辦人異動文件作業進行標準性規範，期能降低未來承辦人出錯機率與交接之困難度</p>
+                <p style="margin-top: 0.75rem;">本章分為「判讀申請表之需求與除錯」、「申請表填寫規範」2大部分，收到申請表後，應逐一檢查以下各項：</p>
 
-                <!-- Sub-section 一 -->
-                <h3 class="subsection-title">一、 判讀申請表之需求與除錯</h3>
-                <p>收到申請表後，依申請需求的性質，分別檢查以下各事項：</p>
-                <ul class="dot-list">
-                    <li><strong>新增碼：</strong>
-                        <ul>
-                            <li>商品碼是否已被使用（除已正式使用之商品碼可能重複，本次不同科別之異動項目亦可能重複取碼）。</li>
-                            <li>已編碼商品中是否有性質接近之商品，可新增為 10 碼（同一小類組之下僅有 3 碼數字可使用，意即僅有 999 個 9 碼商品。過去新增商品時未考慮商品碼使用速度問題，導致部分類別 9 碼使用過快，若 9 碼取號完畢將需要面臨商品碼大幅度重整問題，故盡可能以 10 碼方式減緩使用速度）。</li>
-                            <li>是否隱藏。</li>
-                            <li>是否公告。</li>
-                        </ul>
-                    </li>
-                    <li><strong>刪除碼：</strong>
-                        <ul>
-                            <li>是否有刪除後之移碼位置（刪除 9/10 碼時必須移碼）。</li>
-                            <li>刪除 4/6 碼時須特別注意，該 4/6 碼本身亦可能有案件，且該 4/6 碼下可能尚有未刪除之 9/10 碼需一併處理。</li>
-                            <li>移碼原則以 9/10 碼移至 9/10 碼，避免移至 4/6 碼<button class="fn-btn" onclick="openModal(16)" title="例如：粉底、面膜、唇膏...">[16]</button>，若申請表中有此情形，務必向品改、該科科長及品推高審確認。</li>
-                            <li>是否涉及公開類似關係（品改經常忽略之項目，若涉有公開類似關係，需一併調整 4/6 碼備註）。</li>
-                            <li>是否隱藏。</li>
-                            <li>是否公告。</li>
-                        </ul>
-                    </li>
-                    <li><strong>公開/隱藏調整：</strong>
-                        <ul>
-                            <li>是否涉及公開類似關係（品改經常忽略之項目，若涉有類似關係，於公開/隱藏商品碼可能會使隱藏之類似關係轉為公開，須確認是否同時公告調整 4/6 碼之備註）。</li>
-                            <li><strong>應公告。</strong></li>
-                        </ul>
-                    </li>
-                    <li><strong>名稱異動：</strong>
-                        <ul>
-                            <li>是否涉及公開類似關係（品改經常忽略之項目，若涉有公開類似關係，需一併調整 4/6 碼備註）。</li>
-                            <li>是否公告。</li>
-                        </ul>
-                    </li>
-                    <li><strong>類似關係調整：</strong>
-                        <ul>
-                            <li><strong>類似關係必定 2 個為一組。</strong></li>
-                            <li>品改經常忽略之項目，新增 A、B 類似關係時，申請表中常僅公告 A、或 A 上層 4/6 碼之備註調整，忽略 B 上層 4/6 碼亦須公告備註調整。</li>
-                            <li>特定商品/服務之類似關係，其備註位於上層 4/6 碼。</li>
-                            <li>是否隱藏。</li>
-                            <li>是否公告。</li>
-                        </ul>
-                    </li>
-                </ul>
+                <!-- Sub-section 一 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">一、</span>
+                    <span class="lvl-text">判讀申請表與除錯</span>
+                </div>
+                <p style="margin-left: 1em; margin-bottom: 0.5rem; color: #334155;">收到申請表後，依申請需求的性質，分別檢查以下各事項</p>
 
-                <!-- Sub-section 二 -->
-                <h3 class="subsection-title">二、 申請表填寫規範</h3>
-                <div class="field-hierarchy-container">
-                    <ol class="field-hierarchy-list">
-                        <li>
-                            <span class="field-name">類別</span>
-                            <ul>
-                                <li>2 碼半形數字<button class="fn-btn" onclick="openModal(17)" title="因公報均為2碼，故第1類至第9類應填寫01至09">[17]</button>。</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="field-name">商品代碼</span>
-                            <ul>
-                                <li>4、6、9 碼半形數字，或 10 碼半形數字與英文<button class="fn-btn" onclick="openModal(18)" title="第1類至第9類，前2碼應填寫01至09">[18]</button>。</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="field-name">修正前資訊</span>
-                            <ul>
-                                <li><strong>是否隱藏：</strong>不填寫或填寫「○」。</li>
-                                <li><strong>修正前商品／服務名稱（中文）：</strong>依原有名稱。</li>
-                                <li><strong>修正前商品／服務名稱（英文）：</strong>依原有名稱。</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="field-name">修正後資訊</span>
-                            <ul>
-                                <li><strong>是否隱藏：</strong>不填寫或填寫「○」。</li>
-                                <li><strong>修正後商品／服務名稱（中文）：</strong>全形中文，例外可用全形英文、符號<button class="fn-btn" onclick="openModal(19)" title="注意不可使用分號...">[19]</button>。</li>
-                                <li><strong>修正後商品／服務名稱（英文）：</strong>小寫半形英文，專有名詞等情況可使用大寫<button class="fn-btn" onclick="openModal(20)" title="過去建置時未按統一規則...">[20]</button>，例外可用半形符號。</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="field-name">尼斯碼(非必要)</span>
-                            <ul>
-                                <li>6 碼半形數字。</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="field-name">異動附註</span>
-                            <ul>
-                                <li>依固定用語撰寫<button class="fn-btn" onclick="openModal(21)" title="詳細文字請參考用語表">[21]</button>，詳參異動用語表，以分號區別不同的異動事項。</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="field-name">公告</span>
-                            <ul>
-                                <li>不填寫或填寫「○」。</li>
-                            </ul>
-                        </li>
-                    </ol>
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">新增碼</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">商品碼是否已被使用</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">除已正式使用之商品碼可能重複，本次不同科別之異動項目亦可能重複取碼</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">已編碼商品中是否有性質接近之商品，可新增為10碼</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">同一小類組之下僅有3碼數字可使用，意即僅有999個9碼商品。過去新增商品時未考慮商品碼使用速度問題，導致部分類別9碼使用過快，若9碼取號完畢將需要面臨商品碼大幅度重整問題，故盡可能以10碼方式減緩使用速度</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">是否隱藏</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">是否公告</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">刪除碼</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">是否有刪除後之移碼位置</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">刪除9/10碼時必須移碼</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">刪除4/6碼時須特別注意，該4/6碼本身亦可能有案件，且該4/6碼下可能尚有未刪除之9/10碼需一併處理</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">移碼原則以9/10碼移至9/10碼，避免移至4/6碼<button class="fn-btn" onclick="openModal(16)" title="例如：粉底、面膜、唇膏...歷次異動資料">[16]</button>，若申請表中有此情形，務必向品改、該科科長及品推高審確認</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">是否涉及公開類似關係</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">品改經常忽略之項目，若涉有公開類似關係，需一併調整4/6碼備註</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">5.</span>
+                    <div class="lvl-text">是否隱藏</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">6.</span>
+                    <div class="lvl-text">是否公告</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(三)</span>
+                    <div class="lvl-text">公開/隱藏調整</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">是否涉及公開類似關係</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">品改經常忽略之項目，若涉有類似關係，於公開/隱藏商品碼可能會使隱藏之類似關係轉為公開，須確認是否同時公告調整4/6碼之備註</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text"><strong>應公告</strong></div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(四)</span>
+                    <div class="lvl-text">名稱異動</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">是否涉及公開類似關係</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">品改經常忽略之項目，若涉有公開類似關係，需一併調整4/6碼備註</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">是否公告</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(五)</span>
+                    <div class="lvl-text">類似關係調整</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text"><strong>類似關係必定2個為一組</strong></div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">品改經常忽略之項目，新增A、B類似關係時，申請表中常僅公告A、或A上層4/6碼之備註調整，忽略B上層4/6碼亦須公告備註調整</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">特定商品/服務之類似關係，其備註位於上層4/6碼</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">是否隱藏</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">4.</span>
+                    <div class="lvl-text">是否公告</div>
+                </div>
+
+                <!-- Sub-section 二 (層次2) -->
+                <div class="lvl-2">
+                    <span class="lvl-num">二、</span>
+                    <span class="lvl-text">申請表填寫規範</span>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(一)</span>
+                    <div class="lvl-text">類別</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">2碼半形數字<button class="fn-btn" onclick="openModal(17)" title="因公報均為2碼，故第1類至第9類應填寫01至09">[17]</button></div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(二)</span>
+                    <div class="lvl-text">商品代碼</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">4、6、9碼半形數字，或10碼半形數字與英文<button class="fn-btn" onclick="openModal(18)" title="第1類至第9類，前2碼應填寫01至09">[18]</button></div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(三)</span>
+                    <div class="lvl-text">修正前資訊</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">是否隱藏</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">不填寫或填寫「○」</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">修正前商品/服務名稱（中文）</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">依原有名稱</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">修正前商品/服務名稱（英文）</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">依原有名稱</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(四)</span>
+                    <div class="lvl-text">修正後資訊</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">是否隱藏</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">不填寫或填寫「○」</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
+                    <div class="lvl-text">修正後商品/服務名稱（中文）</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">全形中文，例外可用全形英文、符號<button class="fn-btn" onclick="openModal(19)" title="注意不可使用分號...">[19]</button></div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">3.</span>
+                    <div class="lvl-text">修正後商品/服務名稱（英文）</div>
+                </div>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
+                    <div class="lvl-text">小寫半形英文，專有名詞等情況可使用大寫<button class="fn-btn" onclick="openModal(20)" title="過去建置時未按統一規則...">[20]</button>，例外可用半形符號</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(五)</span>
+                    <div class="lvl-text">尼斯碼(非必要)</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">6碼半形數字</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(六)</span>
+                    <div class="lvl-text">異動附註</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">依固定用語撰寫<button class="fn-btn" onclick="openModal(21)" title="詳細文字請參考用語表">[21]</button>，詳參異動用語表，以分號區別不同的異動事項</div>
+                </div>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(七)</span>
+                    <div class="lvl-text">公告</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">1.</span>
+                    <div class="lvl-text">不填寫或填寫「○」</div>
                 </div>
             </section>
 
-            <!-- Section 5: 異動用語表 -->
+            <!-- Section 4: 異動用語表 (層次1: 肆) -->
             <section id="sec-terms" class="card">
-                <h2 class="section-title">伍、 異動用語表</h2>
+                <h2 class="section-title">肆、 異動用語表</h2>
 
-                <p><strong>用語表符號說明 (表註)：</strong></p>
+                <p><strong>表註：</strong></p>
                 <table class="legend-table">
                     <tr>
-                        <td>●<span class="colon-align">：</span>公報卷數（數字）</td>
-                        <td>○<span class="colon-align">：</span>公報期數（數字）</td>
+                        <td>●<span class="colon-align">：</span>公報卷數，數字</td>
+                        <td>○<span class="colon-align">：</span>公報期數，數次</td>
                     </tr>
                     <tr>
-                        <td>★<span class="colon-align">：</span>系統作業日期（數字，格式如 1150530）</td>
-                        <td>☆<span class="colon-align">：</span>備註/附註內容（文字）</td>
+                        <td>★<span class="colon-align">：</span>系統作業日期，數字</td>
+                        <td>☆<span class="colon-align">：</span>備註/附註內容，文字</td>
                     </tr>
                     <tr>
                         <td>▲<span class="colon-align">：</span>組群、小類組、商品碼</td>
@@ -1398,60 +1962,60 @@
                 </table>
             </section>
 
-            <!-- Section 6: 編修紀錄 -->
+            <!-- Section 5: 編修紀錄 -->
             <section id="sec-changelog" class="card">
-                <h2 class="section-title">陸、 編修紀錄</h2>
+                <h2 class="section-title">編修紀錄</h2>
                 <table class="sop-table">
                     <thead>
                         <tr>
-                            <th style="width: 12%;">版本號</th>
+                            <th style="width: 10%;">序號</th>
                             <th style="width: 15%;">編修日期</th>
                             <th style="width: 15%;">編修者</th>
-                            <th style="width: 58%;">編修重點與異動說明</th>
+                            <th style="width: 60%;">編修重點</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>v1.0</td>
+                            <td>1</td>
+                            <td>111.07.26</td>
+                            <td>曾沛恩</td>
+                            <td>初版，新增階層1主題簡介、匯出「新興商品清冊」、異動文件作業</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
                             <td>111.07.28</td>
                             <td>曾沛恩</td>
-                            <td>初版完成。建立商品服務資料異動標準流程、時程安排與常用對照表。</td>
+                            <td>新增階層1主題系統作業</td>
                         </tr>
                         <tr>
-                            <td>v1.1</td>
-                            <td>111.08.15</td>
+                            <td>3</td>
+                            <td>114.06.10</td>
                             <td>曾沛恩</td>
-                            <td>依據審查科意見調整部分文字與格式，修訂增碼取號例外情境說明。</td>
+                            <td>新增階層1主題時程安排，調整匯出新興商品清冊、異動文件作業、系統作業為階層2主題</td>
                         </tr>
                         <tr>
-                            <td>v1.2</td>
-                            <td>111.09.01</td>
+                            <td>4</td>
+                            <td>115.03.05</td>
                             <td>曾沛恩</td>
-                            <td>新增 e-mail 通知範本一鍵複製功能，優化註腳快顯視窗互動體驗。</td>
+                            <td>新增階層1主題申請表內容檢視與調整規範</td>
                         </tr>
                         <tr>
-                            <td>v1.3</td>
-                            <td>111.09.15</td>
+                            <td>5</td>
+                            <td>115.06.25</td>
                             <td>曾沛恩</td>
-                            <td>嵌入系統操作示意圖（增碼取號原則/例外、公告用圖片）。</td>
+                            <td>新增階層1主題異動用語表</td>
                         </tr>
                         <tr>
-                            <td>v1.4</td>
-                            <td>111.10.01</td>
+                            <td>6</td>
+                            <td>115.09.25</td>
                             <td>曾沛恩</td>
-                            <td>更新增碼取號例外圖片連結，重構申請表欄位為樹狀階層清單。</td>
+                            <td>文件首次html化</td>
                         </tr>
                         <tr>
-                            <td>v1.6</td>
-                            <td>111.10.15</td>
+                            <td>7</td>
+                            <td>115.10.04</td>
                             <td>曾沛恩</td>
-                            <td>新增 head author meta 標籤與頁首作者標示，移除側邊欄搜尋框，比照 S170FAQ 置中版面發布。</td>
-                        </tr>
-                        <tr>
-                            <td>v1.8</td>
-                            <td>111.11.01</td>
-                            <td>曾沛恩</td>
-                            <td>重構異動用語表欄位結構，完成分類跨列合併與無內容欄位橫向合併。</td>
+                            <td>階層2主題匯出「新興商品清冊」增加e-mail例稿、階層2主題公告文件作業增加公告文字例稿、階層2主題上簽增加公文內文、預公告稿例稿</td>
                         </tr>
                     </tbody>
                 </table>
