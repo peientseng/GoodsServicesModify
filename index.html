@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="21015曾沛恩">
+    <title>商品服務暨中英彙編異動標準作業規範 (格式規範v1.6)</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-hover: #1d4ed8;
+            --accent-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --sidebar-width: 260px;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Centered Main Layout Container */
+        .site-container {
+            max-width: 1320px;
+            margin: 2rem auto;
+            padding: 0 1.5rem 3rem 1.5rem;
+            display: grid;
+            grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+            gap: 2rem;
+            align-items: start;
+        }
+
+        
+        .sidebar-author {
+            padding: 0.75rem 1.25rem;
+            background: #f1f5f9;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .header-subtitle {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #e2e8f0;
+            margin-top: 0.5rem;
+            letter-spacing: 0.02em;
+        }
+
+        /* Left Floating Sidebar */
+        .sidebar {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            position: sticky;
+            top: 1.5rem;
+            margin-top: 0;
+            z-index: 90;
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .sidebar-header {
+            padding: 1rem 1.25rem;
+            background: var(--primary-color);
+            color: #ffffff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 0.5rem 0;
+        }
+
+        .sidebar-menu li a {
+            display: block;
+            padding: 0.7rem 1.25rem;
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.92rem;
+            transition: all 0.2s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .sidebar-menu li a:hover {
+            background: #eff6ff;
+            color: var(--accent-color);
+            border-left-color: var(--accent-color);
+        }
+
+        .sidebar-menu li a.active {
+            background: #eff6ff;
+            color: var(--accent-color);
+            font-weight: 700;
+            border-left-color: var(--accent-color);
+        }
+
+        /* Main Content Container */
+        .content-container {
+            min-width: 0;
+            margin-top: 0;
+        }
+
+        /* Header Card with Gradient Background from left to right */
+        .header {
+            background: linear-gradient(to right, #1e3a8a 0%, #2563eb 60%, #60a5fa 100%) !important;
+            color: #ffffff;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 0;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .header-container {
+            width: 100%;
+        }
+
+        .header-title-row {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .header-title {
+            font-size: 1.85rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #ffffff;
+        }
+
+        .version-badge {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 0.25rem 0.6rem;
+            border-radius: 9999px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .header-meta {
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            font-size: 0.95rem;
+            color: #e2e8f0;
+            font-weight: 500;
+        }
+
+        .author-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.3rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .subsection-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: #334155;
+            margin: 1.5rem 0 0.75rem 0;
+        }
+
+        /* Bullet List Formatting with Indentation */
+        .dot-list {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin: 0.75rem 0;
+        }
+
+        .dot-list > li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        .dot-list > li::before {
+            content: "‧";
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .dot-list ul {
+            list-style: none;
+            padding-left: 1.5rem;
+            margin-top: 0.35rem;
+        }
+
+        .dot-list ul > li {
+            position: relative;
+            padding-left: 1.25rem;
+            margin-bottom: 0.35rem;
+        }
+
+        .dot-list ul > li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--text-muted);
+        }
+
+        /* UI Button Badge */
+        .ui-btn {
+            display: inline-block;
+            background-color: #f1f5f9;
+            color: #1e293b;
+            border: 1px solid #cbd5e1;
+            padding: 0.1rem 0.45rem;
+            border-radius: 4px;
+            font-size: 0.88rem;
+            font-weight: 600;
+            margin: 0 0.15rem;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+
+        /* Tables */
+        .sop-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .sop-table th, .sop-table td {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .sop-table th {
+            background-color: #f1f5f9;
+            color: #334155;
+            font-weight: 600;
+        }
+
+        .sop-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        /* Cell Copy Links in Terminology Table */
+        .cell-copy-link {
+            color: #2563eb;
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        .cell-copy-link:hover {
+            color: #1d4ed8;
+            background-color: #eff6ff;
+            border-radius: 2px;
+        }
+
+        /* Footnote Buttons */
+        .fn-btn {
+            background: #eff6ff;
+            color: var(--accent-color);
+            border: 1px solid #bfdbfe;
+            border-radius: 4px;
+            padding: 1px 5px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-left: 3px;
+            transition: all 0.15s ease;
+            vertical-align: super;
+            line-height: 1;
+        }
+
+        .fn-btn:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        /* Email & Template Copy Blocks */
+        .copy-block {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+
+        .copy-block-header {
+            background: #f1f5f9;
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #f1f5f9;
+            color: var(--primary-color);
+            border-color: #94a3b8;
+        }
+
+        .copy-btn.copied {
+            background: #16a34a;
+            color: #ffffff;
+            border-color: #16a34a;
+        }
+
+        .copy-block-body {
+            padding: 1rem;
+            font-family: inherit;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #1e293b;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
+        /* Legend Grid (Borderless Table) */
+        .legend-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border: none !important;
+        }
+
+        .legend-table td {
+            border: none !important;
+            padding: 0.5rem 1rem;
+            width: 50%;
+            vertical-align: middle;
+            font-size: 0.95rem;
+        }
+
+        .colon-align {
+            display: inline-block;
+            width: 1.5em;
+            text-align: center;
+        }
+
+        /* Hierarchy Tree List */
+        .field-hierarchy-list {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .field-hierarchy-list > li {
+            margin-bottom: 1rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+
+        .field-hierarchy-list ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.35rem;
+            font-weight: normal;
+            color: #334155;
+        }
+
+        .field-hierarchy-list ul ul {
+            list-style-type: circle;
+            margin-top: 0.25rem;
+        }
+
+        .field-hierarchy-list li {
+            margin-bottom: 0.35rem;
+            line-height: 1.5;
+        }
+
+        /* Images */
+        .img-container {
+            margin: 1.25rem 0;
+            text-align: center;
+        }
+
+        .doc-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            cursor: default;
+        }
+
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.4rem;
+        }
+
+        /* Download Links */
+        .download-link {
+            color: #2563eb;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.15s ease;
+        }
+        .download-link:hover {
+            color: #1d4ed8;
+            background-color: #eff6ff;
+            border-radius: 2px;
+        }
+
+        /* Footnote Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(2px);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-card {
+            background: #ffffff;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 520px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);
+            position: relative;
+            animation: modalFadeIn 0.2s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-weight: 700;
+            color: var(--primary-color);
+            font-size: 1.1rem;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-close:hover {
+            color: #1e293b;
+        }
+
+        .modal-body {
+            font-size: 0.95rem;
+            color: #334155;
+            line-height: 1.6;
+        }
+
+        /* Image Group Side-by-Side Flex Layout (80% Edge Scale) */
+        .img-group-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .img-group-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: nowrap;
+        }
+
+        .img-item {
+            flex: 1;
+            max-width: 36%;
+        }
+
+        .img-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            cursor: default;
+        }
+
+        .img-arrow {
+            font-size: 2.2rem;
+            color: var(--accent-color);
+            font-weight: bold;
+            user-select: none;
+            padding: 0 0.5rem;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 640px) {
+            .img-group-row {
+                flex-direction: column;
+            }
+            .img-item {
+                max-width: 100%;
+            }
+            .img-arrow {
+                transform: rotate(90deg);
+                margin: 0.5rem 0;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .site-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Centered Site Container -->
+    <div class="site-container">
+
+        <!-- Left Navigation Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-author">
+                👤 作者：21015 曾沛恩
+            </div>
+            <div class="sidebar-header">
+                <span>📂 導覽目錄</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li><a href="#sec-intro">壹、 簡介</a></li>
+                <li><a href="#sec-schedule">貳、 時程安排</a></li>
+                <li><a href="#sec-tasks">參、 各項執行事項說明</a></li>
+                <li><a href="#sec-review">肆、 申請表內容檢視與調整規範</a></li>
+                <li><a href="#sec-terms">伍、 異動用語表</a></li>
+                <li><a href="#sec-changelog">陸、 編修紀錄</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content Container -->
+        <main class="content-container">
+
+            <!-- Header Section matching peientseng.github.io/S170FAQ/ -->
+            <header class="header">
+                <div class="header-container">
+                    <h1 class="header-title">經濟部智慧財產局｜S170商標行政系統</h1>
+                    <div class="header-subtitle">商品服務暨中英彙編異動標準作業規範(v1.6)</div>
+                </div>
+            </header>
+
+            <!-- Section 1: 簡介 -->
+            <section id="sec-intro" class="card">
+                <h2 class="section-title">壹、 簡介</h2>
+                <p>因應尼斯版本之定期修正，及回應外界的商品申請實際需求，爰收集前述修正/調整之商品(服務)資料後，異動S170商品(服務)的DB資料，更新後供外界民眾提出商標申請(S045)、查詢(資服組中英對照系統)及檢索系統(S282, S281)使用。</p>
+                <p style="margin-top: 0.75rem;">考量本定期異動業務對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，故訂定標準作業流程，期能減少人為疏忽造成之錯誤。</p>
+            </section>
+
+            <!-- Section 2: 時程安排 -->
+            <section id="sec-schedule" class="card">
+                <h2 class="section-title">貳、 時程安排</h2>
+                <p>考量本項作業具時效性，為避免作業時間過短產生錯誤，或無法如期公告，請務必嚴格遵照以下時程辦理：</p>
+                <table class="sop-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 34%;">執行事項</th>
+                            <th style="width: 33%;">上半年</th>
+                            <th style="width: 33%;">下半年</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>匯出新興商品清冊</strong><button class="fn-btn" onclick="openModal(1)" title="清冊資料來源為外界民眾於S282查詢商品名稱時...">[1]</button></td>
+                            <td>04/01 匯出 10/01~03/31 清冊</td>
+                            <td>10/01 匯出 04/01~09/30 清冊</td>
+                        </tr>
+                        <tr>
+                            <td><strong>各科品改人員提供異動申請表</strong><button class="fn-btn" onclick="openModal(2)" title="非硬性規定，係保障承辦人有足夠時間作業...">[2]</button></td>
+                            <td>05/10 前提供第一版<br>05/20 停收新需求</td>
+                            <td>11/10 前提供第一版<br>11/20 停收新需求</td>
+                        </tr>
+                        <tr>
+                            <td><strong>異動文件作業</strong><button class="fn-btn" onclick="openModal(3)" title="非硬性規定，考量文件作業完成後才開始系統作業...">[3]</button></td>
+                            <td>收到申請表~05/31</td>
+                            <td>收到申請表~11/30</td>
+                        </tr>
+                        <tr>
+                            <td><strong>系統作業</strong><button class="fn-btn" onclick="openModal(4)" title="非硬性規定，考量系統作業完成後...">[4]</button></td>
+                            <td>異動文件完成~06/05</td>
+                            <td>異動文件完成~12/05</td>
+                        </tr>
+                        <tr>
+                            <td><strong>公告文件作業</strong></td>
+                            <td>公告文件完成~06/10</td>
+                            <td>公告文件完成~12/10</td>
+                        </tr>
+                        <tr>
+                            <td><strong>上簽</strong><button class="fn-btn" onclick="openModal(6)" title="例如當06/10為星期五...">[6]</button></td>
+                            <td>06/10 前</td>
+                            <td>12/10 前</td>
+                        </tr>
+                        <tr>
+                            <td><strong>預公告</strong></td>
+                            <td>06/16</td>
+                            <td>12/16</td>
+                        </tr>
+                        <tr>
+                            <td><strong>公告</strong></td>
+                            <td>07/01</td>
+                            <td>01/01</td>
+                        </tr>
+                        <tr>
+                            <td><strong>加碼/移碼</strong></td>
+                            <td>公告後的假日</td>
+                            <td>公告後的假日</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 3: 各項執行事項說明 -->
+            <section id="sec-tasks" class="card">
+                <h2 class="section-title">參、 各項執行事項說明</h2>
+                
+                <!-- Sub-section 一 -->
+                <h3 class="subsection-title">一、 匯出「新興商品清冊」</h3>
+                <ul class="dot-list">
+                    <li><strong>原則：</strong>匯出「半年內」外部使用者於 S282 的檢索紀錄。由於檢索欄位可能包含無意義字串，需經人工剔除與清理後，僅保留具備商品名稱檢索價值之項目。</li>
+                    <li><strong>時程與資料涵蓋區間：</strong><button class="fn-btn" onclick="openModal(5)" title="07/01異動，匯出10/01至03/31(第四、一季)清冊...">[5]</button>
+                        <ul>
+                            <li><strong>上半年（07/01 異動）：</strong>04/01 匯出，涵蓋前一年 10/01 ~ 當年 03/31（第四、一季）。</li>
+                            <li><strong>下半年（01/01 異動）：</strong>10/01 匯出，涵蓋當年 04/01 ~ 09/30（第二、三季）。</li>
+                        </ul>
+                    </li>
+                    <li><strong>作業步驟：</strong>
+                        <ul>
+                            <li>點選 <span class="ui-btn">e網通</span> → <span class="ui-btn">系統專區</span> → <span class="ui-btn">商標遠端檢索系統_後台</span> → <span class="ui-btn">統計報表</span> → <span class="ui-btn">2.歷次新興商品名稱查詢次數統計報表</span>，轉跳至查詢統計介面。</li>
+                            <li>輸入查詢日期：10/01~03/31（上半年）或 04/01~09/30（下半年）。</li>
+                            <li>輸入條件：「查詢次數由大到小」。</li>
+                            <li>點選 <span class="ui-btn">匯出 EXCEL</span>。</li>
+                            <li>清理檔案，刪除無意義或不合適作為商品名稱之檢索詞。</li>
+                            <li>寄給各科品改人員參考，提供後續提報異動申請之依據。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Sub-section 二 -->
+                <h3 class="subsection-title">二、 各科品改人員提供異動申請表（<a href="https://docs.google.com/document/d/1b0NNifHiRiwJDGiSA4g_dxBwGcFy5s5e/edit?usp=drive_link&ouid=103799344129991318061&rtpof=true&sd=true" target="_blank" class="download-link">點此下載「異動申請表」空白例稿</a>）</h3>
+                <ul class="dot-list">
+                    <li><strong>時程：</strong>應於 05/10、11/10 前提供第一版，05/20、11/20 停收新需求。係考量此項作業涉及對外的商品異動公告，任何錯誤將會導致接下來半年公告之商品及服務有誤，須格外謹慎，故應保留後續足夠之檢查除錯作業時間，逾期原則上不再受理。</li>
+                    <li><strong>原則：</strong>
+                        <ul>
+                            <li>依規範之格式填寫申請表。</li>
+                            <li>檔名命名格式範例：`2-1101014-v1-王大明`（科別-7碼日期-版本-姓名）。</li>
+                            <li>收到各科申請表後請務必妥善存檔留存。</li>
+                            <li>各科品改人員提供之異動申請表，應先經各科科長確認無誤後，再彙整寄送。</li>
+                        </ul>
+                    </li>
+                    <li><strong>命名範例對照：</strong>
+                        <table class="sop-table" style="margin-top: 0.5rem; max-width: 650px;">
+                            <thead>
+                                <tr>
+                                    <th style="width: 40%;">情境</th>
+                                    <th style="width: 60%;">範例檔案名稱</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>110年10月14日 2科王大明送第1份申請書</td>
+                                    <td><code>2-1101014-v1-王大明</code></td>
+                                </tr>
+                                <tr>
+                                    <td>同日維護人員檢視後，提出錯誤處並回信</td>
+                                    <td><code>2-1101014-v1R-曾沛恩</code></td>
+                                </tr>
+                                <tr>
+                                    <td>2科王大明修正錯誤處後回信</td>
+                                    <td><code>2-1101014-v1.1-王大明</code></td>
+                                </tr>
+                                <tr>
+                                    <td>2科王大明提出第2份申請需求</td>
+                                    <td><code>2-1101014-v2-王大明</code></td>
+                                </tr>
+                                <tr>
+                                    <td>2科王大明經組長指示刪除某幾筆需求後回信</td>
+                                    <td><code>2-1101014-v2.1-王大明</code></td>
+                                </tr>
+                                <tr>
+                                    <td>2科科長通知上述兩份需求彙整為最終版本</td>
+                                    <td><code>2-1101014-final-王大明</code></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>
+                    <li><strong>‧ e-mail 通知範本參考：</strong></li>
+                </ul>
+
+                <!-- Copy Block for Email Template -->
+                <div class="copy-block">
+                    <div class="copy-block-header">
+                        <span>e-mail 通知範本：</span>
+                        <button class="copy-btn" onclick="copyText('email-tpl', this)">📋 複製</button>
+                    </div>
+                    <div id="email-tpl" class="copy-block-body">各科品改同仁，您好：
+
+本局預計於○年○月○日辦理「○年第○次商品及服務名稱定期異動」。
+
+如貴科有商品及服務名稱之新增、刪除或修正等需求，請於○年○月○日前，填具「異動需求申請表」（如附件），經科長核閱後回傳至本郵件信箱。
+
+為利後續資料彙整與公告作業，請務必依旨揭時限提供，感謝您的配合！</div>
+                </div>
+
+                <!-- Sub-section 三 -->
+                <h3 class="subsection-title">三、 異動文件作業</h3>
+                <p>依照異動總表產出本次異動所需的所有資訊，詳細寫明所有異動的以下各項：</p>
+                <ul class="dot-list">
+                    <li><strong>系統作業所需資訊：</strong>
+                        <ul class="sub-num-list">
+                            <li>(1) 是否刪除</li>
+                            <li>(2) 是否隱藏</li>
+                            <li>(3) 商品/服務代碼</li>
+                            <li>(4) 商品/服務中文名稱</li>
+                            <li>(5) 商品/服務英文名稱</li>
+                            <li>(6) 尼斯碼(非必要)</li>
+                            <li>(7) 異動附註 <button class="fn-btn" onclick="openModal(9)" title="異動附註標準寫法詳參「用語表」">[9]</button></li>
+                            <li>(8) 異動系統操作步驟</li>
+                        </ul>
+                    </li>
+                    <li><strong>公告文件所需資訊：</strong>
+                        <ul class="sub-num-list">
+                            <li>(1) 商品名稱或組群(中文名稱)</li>
+                            <li>(2) 類別(2碼)</li>
+                            <li>(3) 組群代碼(4/6碼)</li>
+                            <li>(4) 修正事項 <button class="fn-btn" onclick="openModal(10)" title="修正事項公告標準寫法詳參「用語表」">[10]</button></li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Sub-section 四 -->
+                <h3 class="subsection-title">四、 系統作業</h3>
+                <p>點選 <span class="ui-btn">檔案維護</span> → <span class="ui-btn">商品資料維護</span> → <span class="ui-btn">商品資料維護作業﹝修訂版本﹞</span>，依照異動文件的操作步驟逐步完成。</p>
+                <p><strong>規則與原則：</strong></p>
+                <ul class="dot-list">
+                    <li><strong>增碼取號：</strong><button class="fn-btn" onclick="openModal(11)" title="一旦取號，該號碼就無法移除...">[11]</button>
+                        <ul>
+                            <li><strong>原則：</strong>為避免手動輸入錯誤，以點選方式取號。
+                                <ul>
+                                    <li>欲取 9 碼 <code>050103007</code>：應點選 <code>05</code> → <code>0501</code> → <code>050103</code> → <span class="ui-btn">確定</span>。</li>
+                                    <li>欲取 10 碼 <code>050103001B</code>：應點選 <code>05</code> → <code>0501</code> → <code>050103</code> → <span class="ui-btn">10碼</span>。</li>
+                                </ul>
+                                <div class="img-container">
+                                    <img src="https://lh3.googleusercontent.com/d/1ms3bLhPXqSjoHRgBp6zVmtSdwkmu0GAN" alt="增碼取號-原則" class="doc-img">
+                                    <div class="img-caption">圖：增碼取號 - 原則示意圖</div>
+                                </div>
+                            </li>
+                            <li><strong>例外：</strong>當欲取號之處無 4/6 碼或小類組時（即 4/6 碼為 00，如 `0500`），手動輸入商品代碼<button class="fn-btn" onclick="openModal(12)" title="理論上當新增類別時...">[12]</button>。
+                                <div class="img-container">
+                                    <img src="https://lh3.googleusercontent.com/d/1KL3OBpOb96YqrquSWSysDrrJV5Z5x7XI" alt="增碼取號-例外" class="doc-img">
+                                    <div class="img-caption">圖：增碼取號 - 例外示意圖</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><strong>刪除/隱藏：</strong>於畫面上點選 <span class="ui-btn">□刪除</span> 或 <span class="ui-btn">□隱藏</span> 即可。</li>
+                    <li><strong>類似關係：</strong>點選 <span class="ui-btn">類似關係</span>，即可進入類似關係維護頁面，將類似組群碼輸入即可<button class="fn-btn" onclick="openModal(13)" title="類似關係會影響到4/6碼之備註...">[13]</button>。</li>
+                    <li><strong>異動附註：</strong>點選 <span class="ui-btn">異動附註</span> 填入，以分號 `;` 切分。
+                        <div class="img-container">
+                            <img src="https://lh3.googleusercontent.com/d/1KqE2qNinu_hijnUHOQEmu9qmoTPjcfgb" alt="異動附註" class="doc-img">
+                            <div class="img-caption">圖：異動附註設置示意圖</div>
+                        </div>
+                    </li>
+                    <li><strong>預計公告日期：</strong>填入預計公告日期（格式如 `1150701`）<button class="fn-btn" onclick="openModal(14)" title="預計公告日期僅能指定每月1日、16日...">[14]</button>。</li>
+                    <li><strong>加/移碼（加碼、移碼作業）：</strong>
+                        <ul>
+                            <li>單日案件量建議在 8 萬筆左右，如利用假日維護則儘量在 5 萬筆以內，平日日間則維持在 5 千筆以下，避免系統過載。</li>
+                            <li><strong>先加碼、後移碼、最後刪碼：</strong>若有 1 組商品碼刪除，移至 2 組商品碼，務必先加碼後移碼。以下以 A 碼刪除，移至 B、C 二碼為例：
+                                <div class="img-group-container large-group">
+                                    <div class="img-group-row">
+                                        <div class="img-item">
+                                            <img src="https://lh3.googleusercontent.com/d/1c3U_2RPVnDc8jRntfUsK2IZIAVDllSO6" alt="目標1" class="doc-img">
+                                        </div>
+                                        <div class="img-arrow">➔</div>
+                                        <div class="img-item">
+                                            <img src="https://lh3.googleusercontent.com/d/1cnbHEbQcMor66rsQ-v1gfpvRMdCH72C0" alt="目標2" class="doc-img">
+                                        </div>
+                                    </div>
+                                    <div class="img-caption">圖：移碼目標結構</div>
+                                </div>
+
+                                <strong>錯誤作法「先移碼後加碼」：</strong>若先執行「移碼」，將使 A 的案件與 B 的案件混雜，又「移碼」後 A 碼之下已無案件，僅能自 B 碼「加碼」至 C 碼，將導致原 B 碼中的案件一併加入 C 碼中。
+                                <div class="img-group-container large-group">
+                                    <div class="img-group-row">
+                                        <div class="img-item">
+                                            <img src="https://lh3.googleusercontent.com/d/1c45u330S0IUIf1fQhTzSmZto8V0sdD-K" alt="先移碼後加碼1" class="doc-img">
+                                        </div>
+                                        <div class="img-arrow">➔</div>
+                                        <div class="img-item">
+                                            <img src="https://lh3.googleusercontent.com/d/12-YMDJmbLQwq-YwokojS29oJ5cmre7Bg" alt="先移碼後加碼2" class="doc-img">
+                                        </div>
+                                    </div>
+                                    <div class="img-caption">圖：錯誤作法「先移碼後加碼」流程示意</div>
+                                </div>
+
+                                <strong>正確作法「先加碼後移碼」：</strong>
+                                <div class="img-group-container large-group">
+                                    <div class="img-group-row">
+                                        <div class="img-item">
+                                            <img src="https://lh3.googleusercontent.com/d/1GmjRIC6Twdsjo7bSt0Ltn_WuQuGZhfif" alt="先加碼後移碼1" class="doc-img">
+                                        </div>
+                                        <div class="img-arrow">➔</div>
+                                        <div class="img-item">
+                                            <img src="https://lh3.googleusercontent.com/d/1eCIIzjIdPmV91dA5MZunJVsAE7-3icti" alt="先加碼後移碼2" class="doc-img">
+                                        </div>
+                                    </div>
+                                    <div class="img-caption">圖：正確作法「先加碼後移碼」流程示意</div>
+                                </div>
+                                <p style="margin-top: 0.5rem;">已有刪除註記之商品碼欲設定加/移碼時，系統將判斷該碼已刪除無法設定，雖理解上係「刪除後移至另一商品碼」，但操作步驟必須先做完加碼/移碼之設定後，才可註記刪除。</p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Sub-section 五 -->
+                <h3 class="subsection-title">五、 公告文件作業</h3>
+
+                <ul class="dot-list">
+                    <li><strong>公報檔（<a href="https://docs.google.com/document/d/1PwOl_piSc61Ll-HTOP1VOLGmSJA7cItN/edit?usp=drive_link&ouid=103799344129991318061&rtpof=true&sd=true" target="_blank" class="download-link">點此下載「本期異動內容」空白例稿</a>）：</strong>以此格式製作，並產出 PDF 檔。
+                        <div class="img-container">
+                            <img src="https://lh3.googleusercontent.com/d/15X2uuCO_WFMrIWIzSPeE3GKSSpx33WZP" alt="公報檔" class="doc-img">
+                            <div class="img-caption">圖：公報檔樣式範例</div>
+                        </div>
+                    </li>
+                    <li><strong>公告文字：</strong></li>
+                </ul>
+
+                <!-- Copy Blocks for Announcement Text -->
+                <div class="copy-block">
+                    <div class="copy-block-header">
+                        <span>標題：</span>
+                        <button class="copy-btn" onclick="copyText('ann-subject', this)">📋 複製</button>
+                    </div>
+                    <div id="ann-subject" class="copy-block-body">商標申請註冊指定使用之商品暨服務名稱及檢索參考資料異動公告</div>
+                </div>
+
+                <div class="copy-block">
+                    <div class="copy-block-header">
+                        <span>內文：</span>
+                        <button class="copy-btn" onclick="copyText('ann-body', this)">📋 複製</button>
+                    </div>
+                    <div id="ann-body" class="copy-block-body">一、為使商品及服務分類更合時宜，統整參考市場最新趨勢，經檢討商標申請註冊指定使用之商品/服務名稱，總計增修○項、刪除○項，另增修○項組群/小類組名稱或備註事項（詳如附表）。
+
+二、以上異動將自○年○月○日起實施。商標電子申請系統建置之「指定使用商品/服務類別及名稱」將同步更新（有關系統資料正式更新時程，以本局資訊室公告為準）。
+
+三、申請人如希望運用「快軌機制」，透過商標電子申請系統申請註冊前，請確實下載最新異動內容，以避免申請書記載之指定使用商品/服務名稱與電子申請系統建置內容不同，而無法符合「快軌機制」條件及享有減收規費之優惠。
+
+四、自即日起，「商標申請註冊指定使用之商品/服務名稱（異動後新版本）」之全部類別文檔，可於商標檢索系統之「商品及服務名稱分類查詢」下載，歡迎各界參考運用。</div>
+                </div>
+
+                <div class="copy-block">
+                    <div class="copy-block-header">
+                        <span>附件名稱：</span>
+                        <button class="copy-btn" onclick="copyText('ann-attach', this)">📋 複製</button>
+                    </div>
+                    <div id="ann-attach" class="copy-block-body">異動內容（將公告於○年○月○日出版之第○卷第○期商標公報）.pdf</div>
+                </div>
+
+                <ul class="dot-list">
+                    <li><strong>公告用圖片：</strong>
+                        <div class="img-container">
+                            <img src="https://lh3.googleusercontent.com/d/11WrGBt3HbKj_5Ti0bn01rpCADiKYeuWg" alt="公告用圖片" class="doc-img">
+                            <div class="img-caption">圖：公告用圖片範例</div>
+                        </div>
+                    </li>
+                    <li><strong>可公開商品暨服務代碼清冊、商品暨服務中英對照檔案：</strong>
+                        <ul>
+                            <li>點選 <span class="ui-btn">檔案維護</span> → <span class="ui-btn">商品資料維護</span> → <span class="ui-btn">商品資料維護作業﹝修訂版本﹞</span>。</li>
+                            <li>點選 <span class="ui-btn">匯出Excel</span>，因資料量較龐大需等待數分鐘，勿重複點選。</li>
+                            <li><strong>可公開商品暨服務代碼清冊：</strong>保留公開碼的全碼、中文、英文，寄給申辦系統群承辦人。</li>
+                            <li><strong>商品暨服務中英對照：</strong>保留公開碼的4/6碼、中文、英文，寄給中英對照系統承辦人。</li>
+                        </ul>
+                    </li>
+                    <li><strong>歷次異動資料、開放資料檔案：</strong>
+                        <ul>
+                            <li>此二檔案係所有歷年的異動紀錄，其中「歷次異動資料」依類別分為 45 個檔案、「開放資料」則將 45 類依序合併在同一檔案中。</li>
+                            <li><strong>歷次異動資料：</strong>開啟前一期歷次異動資料，將本期異動紀錄填入表格最上方，寄給本組局網站維護人員。</li>
+                            <li><strong>開放資料檔案：</strong>將「歷次異動資料」表格中各欄位以逗點分隔，製作成 CSV 檔，並將所有類別資料合併為單一檔案，寄給中英對照系統承辦人。</li>
+                        </ul>
+                    </li>
+                    <li><strong>商標資料檢索服務商品及服務名稱分類查詢：</strong>
+                        <ul>
+                            <li>將異動的系統作業全數完成後，先開啟 S282 → 商品服務名稱分類查詢頁面作為預備動作。</li>
+                            <li>點選 <span class="ui-btn">e網通</span> → <span class="ui-btn">系統專區</span> → <span class="ui-btn">商標遠端檢索系統_後台</span> → <span class="ui-btn">資料維護</span> → <span class="ui-btn">6.共用代碼檔維護作業</span>。</li>
+                            <li>點選 <span class="ui-btn">BUTTON_CONTROL按鈕顯示控管</span>，於彈出視窗下方點選 <code>printAllGoodsCodeByA</code> 處，可將代碼值相關資訊帶入上方控制參數調整欄位。
+                                <div class="img-container">
+                                    <img src="https://lh3.googleusercontent.com/d/1HbtBVZdy03Wo3Gs_T6ve9IQq43zsQqHV" alt="BUTTON_CONTROL按鈕顯示控管" class="doc-img">
+                                    <div class="img-caption">圖：BUTTON_CONTROL 按鈕顯示控管設定畫面</div>
+                                </div>
+                            </li>
+                            <li>點選 <span class="ui-btn">修改</span>，前端顯示調整為顯示後，點選 <span class="ui-btn">確定</span>。</li>
+                            <li>立刻重新整理 S282 視窗，可看到畫面中多出 <span class="ui-btn">下載新商品服務名稱全類按鈕</span>。
+                                <div class="img-container">
+                                    <img src="https://lh3.googleusercontent.com/d/1Gqn8ugpefyKbrDlxmal840pLn2K5YUdi" alt="下載新商品服務名稱全類按鈕" class="doc-img">
+                                    <div class="img-caption">圖：S282 前端顯示全類下載按鈕</div>
+                                </div>
+                            </li>
+                            <li>將原排序、筆畫排序之 WORD 檔下載後，立刻將 BUTTON_CONTROL 按鈕顯示控管功能調整回隱藏<button class="fn-btn" onclick="openModal(15)" title="在尚未正式預公告前...">[15]</button>。</li>
+                            <li>寄給品推小組承辦人員。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Sub-section 六 -->
+                <h3 class="subsection-title">六、 上簽</h3>
+                <p>選擇便簽(二層決)。</p>
+
+                <!-- Copy Block for Official Document Text -->
+                <div class="copy-block">
+                    <div class="copy-block-header">
+                        <span>公文內文：</span>
+                        <button class="copy-btn" onclick="copyText('doc-body', this)">📋 複製</button>
+                    </div>
+                    <div id="doc-body" class="copy-block-body">一、依據商標法施行細則第19條第2項規定辦理。
+
+二、因應商品及服務分類暨相互檢索參考資料之定期修正將於○年○月○日公告，謹陳異動後「商標資料檢索服務商品及服務名稱分類查詢」資料(附件1)。
+
+三、擬奉核後於○年○月○日局網商標布告欄發布預公告(稿如附件2)，及提供商品暨服務異動資料(附件3)檔案下載，俾利外界用戶預作準備，文存查。</div>
+                </div>
+
+                <p style="margin-top: 1rem;"><strong>公文附件：</strong></p>
+                <ul class="dot-list">
+                    <li>商標資料檢索服務商品及服務名稱分類查詢。</li>
+                    <li>預公告稿：</li>
+                </ul>
+
+                <!-- Copy Blocks for Pre-announcement Draft -->
+                <div class="copy-block">
+                    <div class="copy-block-header">
+                        <span>預公告稿 - 標題：</span>
+                        <button class="copy-btn" onclick="copyText('pre-subject', this)">📋 複製</button>
+                    </div>
+                    <div id="pre-subject" class="copy-block-body">商標申請註冊指定使用之商品暨服務名稱及檢索參考資料異動</div>
+                </div>
+
+                <div class="copy-block">
+                    <div class="copy-block-header">
+                        <span>預公告稿 - 內文：</span>
+                        <button class="copy-btn" onclick="copyText('pre-body', this)">📋 複製</button>
+                    </div>
+                    <div id="pre-body" class="copy-block-body">一、為使商品及服務分類更合時宜，統整參考市場最新趨勢，經檢討商標申請註冊指定使用之商品/服務名稱，總計增修○項、刪除○項，另增修○項組群／小類組名稱或備註事項（詳如附表）。
+
+二、以上異動將自○年○月○日起實施。商標電子申請系統建置之「指定使用商品/服務類別及名稱」將同步更新（有關系統資料正式更新時程，以本局資訊室公告為準）。
+
+三、申請人如希望運用「快軌機制」，透過商標電子申請系統申請註冊前，請確實下載最新異動內容，以避免申請書記載之指定使用商品／服務名稱與電子申請系統建置內容不同，而無法符合「快軌機制」條件及享有減收規費之優惠。
+
+四、自即日起，「商標申請註冊指定使用之商品/服務名稱（異動後新版本）」之全部類別文檔，可於商標檢索系統之「商品及服務名稱分類查詢」下載，歡迎各界參考運用。</div>
+                </div>
+
+                <ul class="dot-list">
+                    <li>商品暨服務異動資料(即公報檔)。</li>
+                </ul>
+
+                <!-- Sub-section 七 -->
+                <h3 class="subsection-title">七、 預公告</h3>
+                <ul class="dot-list">
+                    <li><strong>情境與說明：</strong>每年 6 月 16 日、12 月 16 日於局網站預公告。張貼日期、公開起日設定為上午 8:30，公告起訖為一年後同日的 23:59。另需將 S282 下載新商品服務名稱全類按鈕功能重新打開。</li>
+                    <li><strong>作業方式：</strong>
+                        <ul>
+                            <li>於局網站張貼預公告內容。</li>
+                            <li>自局網站後台，點選 <span class="ui-btn">資料管理</span> → <span class="ui-btn">資料上稿</span>，右側彈出資料上稿選單。</li>
+                            <li>點選 <span class="ui-btn">資料上稿</span> → <span class="ui-btn">經濟部智慧財產局</span> → <span class="ui-btn">最新消息</span> → <span class="ui-btn">布告欄</span>，轉跳至資料上稿頁面。</li>
+                            <li>點擊 <span class="ui-btn">新增上稿</span>，設定預公開當日上午 08:30 由系統自動於指定時間發布。</li>
+                            <li>當日上午到達辦公室後，即可再次開啟 S282 下載新商品服務名稱全類按鈕。</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Section 4: 申請表內容檢視與調整規範 -->
+            <section id="sec-review" class="card">
+                <h2 class="section-title">肆、 申請表內容檢視與調整規範</h2>
+                <p>每半年之商品/服務定期異動業務，對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，其中又以異動文件之判讀、除錯與處理最為繁瑣。故除訂定標準作業流程外，針對承辦人異動文件作業進行標準性規範，期能降低未來承辦人出錯機率與交接之困難度。</p>
+                <p style="margin-top: 0.75rem;">本章分為「判讀申請表之需求與除錯」、「申請表填寫規範」2 大部分，收到申請表後，應逐一檢查以下各項：</p>
+
+                <!-- Sub-section 一 -->
+                <h3 class="subsection-title">一、 判讀申請表之需求與除錯</h3>
+                <p>收到申請表後，依申請需求的性質，分別檢查以下各事項：</p>
+                <ul class="dot-list">
+                    <li><strong>新增碼：</strong>
+                        <ul>
+                            <li>商品碼是否已被使用（除已正式使用之商品碼可能重複，本次不同科別之異動項目亦可能重複取碼）。</li>
+                            <li>已編碼商品中是否有性質接近之商品，可新增為 10 碼（同一小類組之下僅有 3 碼數字可使用，意即僅有 999 個 9 碼商品。過去新增商品時未考慮商品碼使用速度問題，導致部分類別 9 碼使用過快，若 9 碼取號完畢將需要面臨商品碼大幅度重整問題，故盡可能以 10 碼方式減緩使用速度）。</li>
+                            <li>是否隱藏。</li>
+                            <li>是否公告。</li>
+                        </ul>
+                    </li>
+                    <li><strong>刪除碼：</strong>
+                        <ul>
+                            <li>是否有刪除後之移碼位置（刪除 9/10 碼時必須移碼）。</li>
+                            <li>刪除 4/6 碼時須特別注意，該 4/6 碼本身亦可能有案件，且該 4/6 碼下可能尚有未刪除之 9/10 碼需一併處理。</li>
+                            <li>移碼原則以 9/10 碼移至 9/10 碼，避免移至 4/6 碼<button class="fn-btn" onclick="openModal(16)" title="例如：粉底、面膜、唇膏...">[16]</button>，若申請表中有此情形，務必向品改、該科科長及品推高審確認。</li>
+                            <li>是否涉及公開類似關係（品改經常忽略之項目，若涉有公開類似關係，需一併調整 4/6 碼備註）。</li>
+                            <li>是否隱藏。</li>
+                            <li>是否公告。</li>
+                        </ul>
+                    </li>
+                    <li><strong>公開/隱藏調整：</strong>
+                        <ul>
+                            <li>是否涉及公開類似關係（品改經常忽略之項目，若涉有類似關係，於公開/隱藏商品碼可能會使隱藏之類似關係轉為公開，須確認是否同時公告調整 4/6 碼之備註）。</li>
+                            <li><strong>應公告。</strong></li>
+                        </ul>
+                    </li>
+                    <li><strong>名稱異動：</strong>
+                        <ul>
+                            <li>是否涉及公開類似關係（品改經常忽略之項目，若涉有公開類似關係，需一併調整 4/6 碼備註）。</li>
+                            <li>是否公告。</li>
+                        </ul>
+                    </li>
+                    <li><strong>類似關係調整：</strong>
+                        <ul>
+                            <li><strong>類似關係必定 2 個為一組。</strong></li>
+                            <li>品改經常忽略之項目，新增 A、B 類似關係時，申請表中常僅公告 A、或 A 上層 4/6 碼之備註調整，忽略 B 上層 4/6 碼亦須公告備註調整。</li>
+                            <li>特定商品/服務之類似關係，其備註位於上層 4/6 碼。</li>
+                            <li>是否隱藏。</li>
+                            <li>是否公告。</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <!-- Sub-section 二 -->
+                <h3 class="subsection-title">二、 申請表填寫規範</h3>
+                <div class="field-hierarchy-container">
+                    <ol class="field-hierarchy-list">
+                        <li>
+                            <span class="field-name">類別</span>
+                            <ul>
+                                <li>2 碼半形數字<button class="fn-btn" onclick="openModal(17)" title="因公報均為2碼，故第1類至第9類應填寫01至09">[17]</button>。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="field-name">商品代碼</span>
+                            <ul>
+                                <li>4、6、9 碼半形數字，或 10 碼半形數字與英文<button class="fn-btn" onclick="openModal(18)" title="第1類至第9類，前2碼應填寫01至09">[18]</button>。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="field-name">修正前資訊</span>
+                            <ul>
+                                <li><strong>是否隱藏：</strong>不填寫或填寫「○」。</li>
+                                <li><strong>修正前商品／服務名稱（中文）：</strong>依原有名稱。</li>
+                                <li><strong>修正前商品／服務名稱（英文）：</strong>依原有名稱。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="field-name">修正後資訊</span>
+                            <ul>
+                                <li><strong>是否隱藏：</strong>不填寫或填寫「○」。</li>
+                                <li><strong>修正後商品／服務名稱（中文）：</strong>全形中文，例外可用全形英文、符號<button class="fn-btn" onclick="openModal(19)" title="注意不可使用分號...">[19]</button>。</li>
+                                <li><strong>修正後商品／服務名稱（英文）：</strong>小寫半形英文，專有名詞等情況可使用大寫<button class="fn-btn" onclick="openModal(20)" title="過去建置時未按統一規則...">[20]</button>，例外可用半形符號。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="field-name">尼斯碼(非必要)</span>
+                            <ul>
+                                <li>6 碼半形數字。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="field-name">異動附註</span>
+                            <ul>
+                                <li>依固定用語撰寫<button class="fn-btn" onclick="openModal(21)" title="詳細文字請參考用語表">[21]</button>，詳參異動用語表，以分號區別不同的異動事項。</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <span class="field-name">公告</span>
+                            <ul>
+                                <li>不填寫或填寫「○」。</li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <!-- Section 5: 異動用語表 -->
+            <section id="sec-terms" class="card">
+                <h2 class="section-title">伍、 異動用語表</h2>
+
+                <p><strong>用語表符號說明 (表註)：</strong></p>
+                <table class="legend-table">
+                    <tr>
+                        <td>●<span class="colon-align">：</span>公報卷數（數字）</td>
+                        <td>○<span class="colon-align">：</span>公報期數（數字）</td>
+                    </tr>
+                    <tr>
+                        <td>★<span class="colon-align">：</span>系統作業日期（數字，格式如 1150530）</td>
+                        <td>☆<span class="colon-align">：</span>備註/附註內容（文字）</td>
+                    </tr>
+                    <tr>
+                        <td>▲<span class="colon-align">：</span>組群、小類組、商品碼</td>
+                        <td>△<span class="colon-align">：</span>組群、小類組，4/6碼數字</td>
+                    </tr>
+                    <tr>
+                        <td>■<span class="colon-align">：</span>異動前商品/服務名稱</td>
+                        <td>□<span class="colon-align">：</span>異動後商品/服務名稱</td>
+                    </tr>
+                </table>
+
+                <table class="sop-table">
+                    <thead>
+                        <tr>
+                            <th colspan="2" style="text-align: center;">異動事項</th>
+                            <th rowspan="2" style="vertical-align: middle;">申請表</th>
+                            <th rowspan="2" style="vertical-align: middle;">異動附註</th>
+                            <th rowspan="2" style="vertical-align: middle;">公告</th>
+                            <th rowspan="2" style="vertical-align: middle;">公告內容</th>
+                        </tr>
+                        <tr>
+                            <th style="font-weight: normal; font-size: 0.88rem; color: #64748b; text-align: center;">分類</th>
+                            <th style="font-weight: normal; font-size: 0.88rem; color: #64748b;">情境</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="6" style="vertical-align: middle; text-align: center; font-weight: bold;">新增</td>
+                            <td>公開碼</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增。</a></td>
+                        </tr>
+                        <tr>
+                            <td>隱藏碼</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增(隱藏)</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增</a></td>
+                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                        </tr>
+                        <tr>
+                            <td>公開小類組</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增小類組</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組。</a></td>
+                        </tr>
+                        <tr>
+                            <td>隱藏小類組</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組(隱藏)</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增小類組</a></td>
+                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                        </tr>
+                        <tr>
+                            <td>公開組群</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增組群</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群。</a></td>
+                        </tr>
+                        <tr>
+                            <td>隱藏組群</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群(隱藏)</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增組群</a></td>
+                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="9" style="vertical-align: middle; text-align: center; font-weight: bold;">刪除</td>
+                            <td>刪除公開碼 (碼移相同公開組群/小類組)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除*。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除公開碼 (碼移不同公開組群/小類組)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，移至「△」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除公開碼 (碼移隱藏碼)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除隱藏碼</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除(隱藏)，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除,碼移:▲</a></td>
+                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                        </tr>
+                        <tr>
+                            <td>刪除公開小類組 (碼移公開小類組)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除小類組,碼移:▲</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組，移至「△」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除公開小類組 (碼移隱藏小類組)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除小類組,碼移:▲</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除隱藏小類組</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組(隱藏)，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除小類組,碼移:▲</a></td>
+                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                        </tr>
+                        <tr>
+                            <td>刪除公開組群 (碼移公開組群)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除組群,碼移:▲</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群，移至「△」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除公開組群 (碼移隱藏組群)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群，碼移▲</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除組群,碼移:▲</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群。</a></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" style="vertical-align: middle; text-align: center; font-weight: bold;">公開/隱藏</td>
+                            <td>隱藏公開碼</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告刪除，改列隱藏</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★改列隱藏</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除。</a></td>
+                        </tr>
+                        <tr>
+                            <td>公開隱藏碼</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">取消隱藏，公告新增</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★取消隱藏</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增。</a></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center; font-weight: bold;">名稱異動</td>
+                            <td>文字修正 (原有名稱異動，且仍有舊名稱商品)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">用字修正(原:■)</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★用字修正(原:■)</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">名稱修正為「□」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>名稱更正 (輸入誤繕更正，且無舊名稱商品)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">名稱更正(原:■)</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★名稱更正(原:■)</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">名稱更正為「□」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除修正前商品名稱，並新增修正後商品名稱</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">不適用，請拆為刪除與新增2筆需求</a></td>
+                            <td colspan="3" style="text-align: center; color: #64748b;">-</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="4" style="vertical-align: middle; text-align: center; font-weight: bold;">刪除備註</td>
+                            <td>刪除備註 (刪除公開類似關係)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告刪除備註「☆」</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除備註「☆」</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除備註 (刪除隱藏類似關係)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除備註「☆」</a></td>
+                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                        </tr>
+                        <tr>
+                            <td>刪除備註 (包含公開與隱藏類似關係)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告刪除備註「☆1」，刪除備註「☆2」</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除備註「☆1」;★刪除備註「☆2」</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆1」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>刪除備註 (刪除文字說明)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除備註「☆」</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」。</a></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center; font-weight: bold;">新增備註</td>
+                            <td>新增備註 (新增公開類似關係)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告新增備註「☆」</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增備註「☆」</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增備註「☆」。</a></td>
+                        </tr>
+                        <tr>
+                            <td>新增備註 (新增隱藏類似關係)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增備註「☆」</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增備註「☆」</a></td>
+                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                        </tr>
+                        <tr>
+                            <td>新增備註 (包含公開與隱藏類似關係)</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告新增備註「☆1」，新增備註「☆2」</a></td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增備註「☆1」;★新增備註「☆2」</a></td>
+                            <td>是</td>
+                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增備註「☆1」。</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Section 6: 編修紀錄 -->
+            <section id="sec-changelog" class="card">
+                <h2 class="section-title">陸、 編修紀錄</h2>
+                <table class="sop-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 12%;">版本號</th>
+                            <th style="width: 15%;">編修日期</th>
+                            <th style="width: 15%;">編修者</th>
+                            <th style="width: 58%;">編修重點與異動說明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>v1.0</td>
+                            <td>111.07.28</td>
+                            <td>曾沛恩</td>
+                            <td>初版完成。建立商品服務資料異動標準流程、時程安排與常用對照表。</td>
+                        </tr>
+                        <tr>
+                            <td>v1.1</td>
+                            <td>111.08.15</td>
+                            <td>曾沛恩</td>
+                            <td>依據審查科意見調整部分文字與格式，修訂增碼取號例外情境說明。</td>
+                        </tr>
+                        <tr>
+                            <td>v1.2</td>
+                            <td>111.09.01</td>
+                            <td>曾沛恩</td>
+                            <td>新增 e-mail 通知範本一鍵複製功能，優化註腳快顯視窗互動體驗。</td>
+                        </tr>
+                        <tr>
+                            <td>v1.3</td>
+                            <td>111.09.15</td>
+                            <td>曾沛恩</td>
+                            <td>嵌入系統操作示意圖（增碼取號原則/例外、公告用圖片）。</td>
+                        </tr>
+                        <tr>
+                            <td>v1.4</td>
+                            <td>111.10.01</td>
+                            <td>曾沛恩</td>
+                            <td>更新增碼取號例外圖片連結，重構申請表欄位為樹狀階層清單。</td>
+                        </tr>
+                        <tr>
+                            <td>v1.6</td>
+                            <td>111.10.15</td>
+                            <td>曾沛恩</td>
+                            <td>新增 head author meta 標籤與頁首作者標示，移除側邊欄搜尋框，比照 S170FAQ 置中版面發布。</td>
+                        </tr>
+                        <tr>
+                            <td>v1.8</td>
+                            <td>111.11.01</td>
+                            <td>曾沛恩</td>
+                            <td>重構異動用語表欄位結構，完成分類跨列合併與無內容欄位橫向合併。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Footnote Modal Window -->
+    <div id="fn-modal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-card">
+            <div class="modal-header">
+                <span id="modal-title-text" class="modal-title">註腳說明</span>
+                <button class="modal-close" onclick="hideModal()">&times;</button>
+            </div>
+            <div id="modal-body-text" class="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        const footnotesData = {
+            "1": "清冊資料來源為外界民眾於S282查詢商品名稱時，輸入非彙編之名稱時，系統記錄所輸入的商品名稱，並統計其輸入次數",
+            "2": "非硬性規定，係保障承辦人有足夠時間作業。如審查科採一次性提供全部異動資料，則需於05/15、11/15前提供，保證承辦人至少有近一個月的處理時間；如審查科自5月、11月初便陸續提供申請表，使承辦人得以提早開始作業，則受理申請表截止日可往後延期",
+            "3": "非硬性規定，考量文件作業完成後才開始系統作業，若遇到尼斯大改版時異動數量甚多，應保留足夠的時間予系統作業",
+            "4": "非硬性規定，考量系統作業完成後，才得以匯出相關表單進行後續上簽、公報資料提供予公告業務。後續各項業務皆無法延期，應盡可能提早完成確保有足夠緩衝時間",
+            "5": "07/01異動，匯出10/01至03/31(第四、一季)清冊；01/01異動，匯出04/01至09/30(第二、三季)清冊",
+            "6": "例如當06/10為星期五，若06/10當日簽出恰逢科長不在，則公文最快也要在下周一06/13才有機會由科長送出，此時距離預公告日期過近，中間再有任何一層長官請假或出差，就有延宕後續程序的風險",
+            "7": "因內容已非單純修正錯誤，故推進本版號第1個位數",
+            "8": "詳參「申請表內容檢視與調整規範」",
+            "9": "異動附註標準寫法詳參「用語表」",
+            "10": "修正事項公告標準寫法詳參「用語表」",
+            "11": "一旦取號，該號碼就無法移除，因「刪除」僅是刪除註記，不會真正刪除資料，故取號前務必再三確認",
+            "12": "理論上當新增類別時，也會出現無群組，無法產生00組群之情況，但現行分類係按照國際尼斯分類，若尼斯未調整分類方式，不會出現無細分組群的狀況",
+            "13": "類似關係會影響到4/6碼之備註，需特別注意",
+            "14": "預計公告日期僅能指定每月1日、16日，於預計公告日期當日，「修訂版本」將會覆蓋「公告版本」，故即便隨時可在維護介面調整各種商品/服務內容，但所有調整內容最快也要等到下一次公告日才會成為現行正式版",
+            "15": "在尚未正式預公告前，不應讓外界看到相關資訊，故此作業盡快完成後就將功能關閉。而畫面中的下載功能選項僅是開啟下載連結，不必等到檔案完全下載完成，只要滑鼠有點擊到就會下載，爰可在滑鼠點擊後立刻將功能關閉",
+            "16": "例如：「粉底」、「面膜」、「唇膏」、「收斂水」若不細分，全部編入「030101化粧品」，未來單獨成立「收斂水」商品時，因030101中混雜4種不同的商品，無法通過批次移碼功能，將「收斂水」由4/6碼移至新成立之商品碼，此時需以檢索系統找出有「收斂水」商品之案件，再手動逐筆修改。若案件數量過多，亦無法通過手動修改商品碼解決",
+            "17": "因公報均為2碼，故第1類至第9類應填寫01至09",
+            "18": "第1類至第9類，前2碼應填寫01至09",
+            "19": "注意不可使用分號，現行商品/服務名稱以分號作為切分商品之專用符號",
+            "20": "過去建置時未按統一規則，商品/服務異動時，不論品改是否異動英文，均按統一規則書寫",
+            "21": "詳細文字請參考用語表"
+        };
+
+        function openModal(id) {
+            const titleEl = document.getElementById('modal-title-text');
+            const bodyEl = document.getElementById('modal-body-text');
+            const modalEl = document.getElementById('fn-modal');
+
+            if (footnotesData[id]) {
+                titleEl.textContent = `註腳 [${id}] 說明`;
+                bodyEl.textContent = footnotesData[id];
+                modalEl.style.display = 'flex';
+            }
+        }
+
+        function hideModal() {
+            document.getElementById('fn-modal').style.display = 'none';
+        }
+
+        function closeModal(e) {
+            if (e.target.id === 'fn-modal') {
+                hideModal();
+            }
+        }
+
+        function copyText(elementId, btn) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✓ 已複製';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('複製失敗:', err);
+            });
+        }
+
+        function copyCellText(el, e) {
+            e.preventDefault();
+            const text = el.innerText.trim();
+            navigator.clipboard.writeText(text).catch(err => {
+                console.error('複製失敗:', err);
+            });
+        }
+    </script>
+</body>
+</html>
