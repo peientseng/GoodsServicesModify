@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="21015曾沛恩">
-    <title>商品服務暨中英彙編異動標準作業規範 (格式規範v2.0)</title>
+    <title>商品服務暨中英彙編異動標準作業規範 (格式規範v2.2)</title>
     <style>
         :root {
             --primary-color: #1e3a8a;
@@ -601,7 +601,22 @@
                 top: 0;
             }
         }
-</style>
+
+        /* Slashed Empty Table Cell (Top-right to Bottom-left diagonal line) */
+        .slash-cell {
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" preserveAspectRatio="none"><line x1="100%" y1="0" x2="0" y2="100%" stroke="%2394a3b8" stroke-width="1.2"/></svg>') no-repeat center center !important;
+            background-size: 100% 100% !important;
+        }
+
+        .sop-table th,
+        .sop-table td {
+            border: 1px solid var(--border-color);
+            padding: 0.75rem 0.5rem;
+            text-align: center !important;
+            vertical-align: middle !important;
+        }
+
+    </style>
 </head>
 <body>
 
@@ -632,7 +647,7 @@
             <header class="header">
                 <div class="header-container">
                     <h1 class="header-title">經濟部智慧財產局｜S170商標行政系統</h1>
-                    <div class="header-subtitle">商品服務暨中英彙編異動標準作業規範(v2.0)</div>
+                    <div class="header-subtitle">商品服務暨中英彙編異動標準作業規範(v2.2)</div>
                 </div>
             </header>
 
@@ -1741,7 +1756,7 @@
                 <table class="legend-table">
                     <tr>
                         <td>●<span class="colon-align">：</span>公報卷數，數字</td>
-                        <td>○<span class="colon-align">：</span>公報期數，數次</td>
+                        <td>○<span class="colon-align">：</span>公報期數，數字</td>
                     </tr>
                     <tr>
                         <td>★<span class="colon-align">：</span>系統作業日期，數字</td>
@@ -1757,206 +1772,232 @@
                     </tr>
                 </table>
 
-                <table class="sop-table">
+                                <table class="sop-table">
                     <thead>
                         <tr>
-                            <th colspan="2" style="text-align: center;">異動事項</th>
-                            <th rowspan="2" style="vertical-align: middle;">申請表</th>
-                            <th rowspan="2" style="vertical-align: middle;">異動附註</th>
-                            <th rowspan="2" style="vertical-align: middle;">公告</th>
-                            <th rowspan="2" style="vertical-align: middle;">公告內容</th>
-                        </tr>
-                        <tr>
-                            <th style="font-weight: normal; font-size: 0.88rem; color: #64748b; text-align: center;">分類</th>
-                            <th style="font-weight: normal; font-size: 0.88rem; color: #64748b;">情境</th>
+                            <th colspan="4" style="text-align: center; vertical-align: middle;">異動事項</th>
+                            <th style="text-align: center; vertical-align: middle;">申請表</th>
+                            <th style="text-align: center; vertical-align: middle;">異動附註</th>
+                            <th style="text-align: center; vertical-align: middle;">公告</th>
+                            <th style="text-align: center; vertical-align: middle;">公告內容</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- 新增 -->
                         <tr>
                             <td rowspan="6" style="vertical-align: middle; text-align: center; font-weight: bold;">新增</td>
-                            <td>公開碼</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增。</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">公開</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">○</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增。</a></td>
                         </tr>
                         <tr>
-                            <td>隱藏碼</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增(隱藏)</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增</a></td>
-                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增小類組</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組。</a></td>
                         </tr>
                         <tr>
-                            <td>公開小類組</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增小類組</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增組群</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群。</a></td>
                         </tr>
                         <tr>
-                            <td>隱藏小類組</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組(隱藏)</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增小類組</a></td>
-                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">隱藏</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增(隱藏)</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增</a></td>
+                            <td rowspan="3" colspan="2" class="slash-cell"></td>
                         </tr>
                         <tr>
-                            <td>公開組群</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增組群</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組(隱藏)</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增小類組</a></td>
                         </tr>
                         <tr>
-                            <td>隱藏組群</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群(隱藏)</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增組群</a></td>
-                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群(隱藏)</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增組群</a></td>
+                        </tr>
+
+                        <!-- 刪除 -->
+                        <tr>
+                            <td rowspan="8" style="vertical-align: middle; text-align: center; font-weight: bold;">刪除</td>
+                            <td rowspan="5" style="vertical-align: middle; text-align: center;">公開</td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td style="vertical-align: middle; text-align: center;">移至相同<br>小類組/組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
+                            <td rowspan="5" style="vertical-align: middle; text-align: center;">○</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除*。</a></td>
                         </tr>
                         <tr>
-                            <td rowspan="9" style="vertical-align: middle; text-align: center; font-weight: bold;">刪除</td>
-                            <td>刪除公開碼 (碼移相同公開組群/小類組)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除*。</a></td>
+                            <td style="vertical-align: middle; text-align: center;">移至不同<br>小類組/組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，移至「△」。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除公開碼 (碼移不同公開組群/小類組)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，移至「△」。</a></td>
+                            <td style="vertical-align: middle; text-align: center;">移至隱藏碼</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除公開碼 (碼移隱藏碼)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除,碼移:▲</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除小類組,碼移:▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除隱藏碼</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除(隱藏)，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除,碼移:▲</a></td>
-                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除組群,碼移:▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除公開小類組 (碼移公開小類組)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除小類組,碼移:▲</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組，移至「△」。</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">隱藏</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除(隱藏)，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除,碼移:▲</a></td>
+                            <td rowspan="3" colspan="2" class="slash-cell"></td>
                         </tr>
                         <tr>
-                            <td>刪除公開小類組 (碼移隱藏小類組)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除小類組,碼移:▲</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組(隱藏)，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除小類組,碼移:▲</a></td>
                         </tr>
                         <tr>
-                            <td>刪除隱藏小類組</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組(隱藏)，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除小類組,碼移:▲</a></td>
-                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群(隱藏)，碼移▲</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除組群,碼移:▲</a></td>
+                        </tr>
+
+                        <!-- 公開/隱藏 -->
+                        <tr>
+                            <td rowspan="6" style="vertical-align: middle; text-align: center; font-weight: bold;">公開/隱藏</td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">隱藏<br>↓<br>公開</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告刪除，改列隱藏</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★改列隱藏</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">○</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除公開組群 (碼移公開組群)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除組群,碼移:▲</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群，移至「△」。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除小類組。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除公開組群 (碼移隱藏組群)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群，碼移▲</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除組群,碼移:▲</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除組群。</a></td>
                         </tr>
                         <tr>
-                            <td rowspan="2" style="vertical-align: middle; text-align: center; font-weight: bold;">公開/隱藏</td>
-                            <td>隱藏公開碼</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告刪除，改列隱藏</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★改列隱藏</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除。</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">公開<br>↓<br>隱藏</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">取消隱藏，公告新增</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★取消隱藏</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">○</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增。</a></td>
                         </tr>
                         <tr>
-                            <td>公開隱藏碼</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">取消隱藏，公告新增</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★取消隱藏</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增小類組。</a></td>
                         </tr>
                         <tr>
-                            <td rowspan="3" style="vertical-align: middle; text-align: center; font-weight: bold;">名稱異動</td>
-                            <td>文字修正 (原有名稱異動，且仍有舊名稱商品)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">用字修正(原:■)</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★用字修正(原:■)</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">名稱修正為「□」。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增組群。</a></td>
+                        </tr>
+
+                        <!-- 99碼 -->
+                        <tr>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center; font-weight: bold;">99碼</td>
+                            <td colspan="3" style="vertical-align: middle; text-align: center;">新增</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增隱藏</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增</a></td>
+                            <td rowspan="3" colspan="2" class="slash-cell"></td>
                         </tr>
                         <tr>
-                            <td>名稱更正 (輸入誤繕更正，且無舊名稱商品)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">名稱更正(原:■)</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★名稱更正(原:■)</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">名稱更正為「□」。</a></td>
+                            <td colspan="3" style="vertical-align: middle; text-align: center;">刪除</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除隱藏</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除(改列可核收,新編▲)</a></td>
                         </tr>
                         <tr>
-                            <td>刪除修正前商品名稱，並新增修正後商品名稱</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">不適用，請拆為刪除與新增2筆需求</a></td>
-                            <td colspan="3" style="text-align: center; color: #64748b;">-</td>
+                            <td colspan="3" style="vertical-align: middle; text-align: center;">修正附註</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">修正附註</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★修訂:☆</a></td>
+                        </tr>
+
+                        <!-- 名稱 -->
+                        <tr>
+                            <td rowspan="7" style="vertical-align: middle; text-align: center; font-weight: bold;">名稱</td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">公開</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">修正中文</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★用字修正(原:■)</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">○</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">修正為「□」。</a></td>
                         </tr>
                         <tr>
-                            <td rowspan="4" style="vertical-align: middle; text-align: center; font-weight: bold;">刪除備註</td>
-                            <td>刪除備註 (刪除公開類似關係)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告刪除備註「☆」</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除備註「☆」</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★小類組名稱修正(原:■)</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">小類組名稱修正為「□」。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除備註 (刪除隱藏類似關係)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除備註「☆」</a></td>
-                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★組群名稱修正(原:■)</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">組群名稱修正為「□」。</a></td>
                         </tr>
                         <tr>
-                            <td>刪除備註 (包含公開與隱藏類似關係)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告刪除備註「☆1」，刪除備註「☆2」</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除備註「☆1」;★刪除備註「☆2」</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆1」。</a></td>
+                            <td rowspan="3" style="vertical-align: middle; text-align: center;">隱藏</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">商品</td>
+                            <td rowspan="3" class="slash-cell"></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★用字修正(原:■)</a></td>
+                            <td rowspan="3" colspan="2" class="slash-cell"></td>
                         </tr>
                         <tr>
-                            <td>刪除備註 (刪除文字說明)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除備註「☆」</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除備註「☆」。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">小類組</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★小類組名稱修正(原:■)</a></td>
                         </tr>
                         <tr>
-                            <td rowspan="3" style="vertical-align: middle; text-align: center; font-weight: bold;">新增備註</td>
-                            <td>新增備註 (新增公開類似關係)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告新增備註「☆」</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增備註「☆」</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增備註「☆」。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">組群</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★組群名稱修正(原:■)</a></td>
                         </tr>
                         <tr>
-                            <td>新增備註 (新增隱藏類似關係)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增備註「☆」</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增備註「☆」</a></td>
-                            <td colspan="2" style="text-align: center; color: #94a3b8;">-</td>
+                            <td colspan="3" style="vertical-align: middle; text-align: center;">英文</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">修正英文</a></td>
+                            <td colspan="3" class="slash-cell"></td>
+                        </tr>
+
+                        <!-- 類似關係 -->
+                        <tr>
+                            <td rowspan="4" style="vertical-align: middle; text-align: center; font-weight: bold;">類似關係</td>
+                            <td rowspan="2" style="vertical-align: middle; text-align: center;">公開</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">新增</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增▲-▲類似關係</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增</a></td>
+                            <td rowspan="2" style="vertical-align: middle; text-align: center;">○</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">修正/新增備註：☆。</a></td>
                         </tr>
                         <tr>
-                            <td>新增備註 (包含公開與隱藏類似關係)</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">公告新增備註「☆1」，新增備註「☆2」</a></td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★新增備註「☆1」;★新增備註「☆2」</a></td>
-                            <td>是</td>
-                            <td><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增備註「☆1」。</a></td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">刪除</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除▲-▲類似關係</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刊●卷○期,★刪除</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">修正/刪除備註：☆。</a></td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" style="vertical-align: middle; text-align: center;">隱藏</td>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">新增</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">新增▲-▲類似關係(隱藏)</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★新增</a></td>
+                            <td rowspan="2" colspan="2" class="slash-cell"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="vertical-align: middle; text-align: center;">刪除</td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">刪除▲-▲類似關係(隱藏)</a></td>
+                            <td style="vertical-align: middle; text-align: center;"><a class="cell-copy-link" href="javascript:void(0)" onclick="copyCellText(this, event)">★刪除</a></td>
                         </tr>
                     </tbody>
                 </table>
