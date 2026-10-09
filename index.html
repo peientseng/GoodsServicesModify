@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="21015曾沛恩">
-    <title>商品服務暨中英彙編異動標準作業規範 (格式規範v2.3)</title>
+    <title>商品服務暨中英彙編異動標準作業規範 (格式規範v2.5)</title>
     <style>
         :root {
             --primary-color: #1e3a8a;
@@ -302,14 +302,14 @@
         }
 
         /* Tables */
+        
+        /* Table Styles */
         .sop-table {
             width: 100%;
             border-collapse: collapse;
             margin: 1rem 0;
             font-size: 0.95rem;
         }
-
-
 
         .sop-table th {
             background-color: #f1f5f9;
@@ -321,144 +321,39 @@
             background-color: #f8fafc;
         }
 
-        /* Cell Copy Links in Terminology Table */
-        .cell-copy-link {
-            color: #2563eb;
-            text-decoration: underline;
-            cursor: pointer;
-            font-weight: 500;
-            transition: color 0.15s ease;
-        }
-
-        .cell-copy-link:hover {
-            color: #1d4ed8;
-            background-color: #eff6ff;
-            border-radius: 2px;
-        }
-
-        /* Footnote Buttons */
-        .fn-btn {
-            background: #eff6ff;
-            color: var(--accent-color);
-            border: 1px solid #bfdbfe;
-            border-radius: 4px;
-            padding: 1px 5px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-left: 3px;
-            transition: all 0.15s ease;
-            vertical-align: super;
-            line-height: 1;
-        }
-
-        .fn-btn:hover {
-            background: var(--accent-color);
-            color: #ffffff;
-        }
-
-        /* Email & Template Copy Blocks */
-        .copy-block {
-            background: #f8fafc;
+        .sop-table th,
+        .sop-table td {
             border: 1px solid var(--border-color);
-            border-radius: 8px;
-            margin: 0.75rem 0;
-            overflow: hidden;
-        }
-
-        .copy-block-header {
-            background: #f1f5f9;
-            padding: 0.6rem 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-            font-weight: 600;
-            color: #334155;
-            font-size: 0.9rem;
-        }
-
-        .copy-btn {
-            background: #ffffff;
-            border: 1px solid #cbd5e1;
-            color: #475569;
-            padding: 0.25rem 0.65rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.25rem;
-            transition: all 0.2s ease;
-        }
-
-        .copy-btn:hover {
-            background: #f1f5f9;
-            color: var(--primary-color);
-            border-color: #94a3b8;
-        }
-
-        .copy-btn.copied {
-            background: #16a34a;
-            color: #ffffff;
-            border-color: #16a34a;
-        }
-
-        .copy-block-body {
-            padding: 1rem;
-            font-family: inherit;
-            white-space: pre-wrap;
-            word-break: break-all;
-            color: #1e293b;
-            font-size: 0.92rem;
-            line-height: 1.5;
-        }
-
-        /* Legend Grid (Borderless Table) */
-        .legend-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-            border: none !important;
-        }
-
-        .legend-table td {
-            border: none !important;
-            padding: 0.5rem 1rem;
-            width: 50%;
+            padding: 0.75rem 0.5rem;
+            text-align: center;
             vertical-align: middle;
-            font-size: 0.95rem;
         }
 
-        .colon-align {
-            display: inline-block;
-            width: 1.5em;
-            text-align: center;
+        /* 靠左對齊專用樣式規則 (v2.4 強制最高優先權) */
+        .table-schedule th,
+        .table-schedule td {
+            text-align: left !important;
         }
 
-        /* Images */
-        .img-container {
-            margin: 1.25rem 0;
-            text-align: center;
+        .table-naming-example thead th {
+            text-align: center !important;
+        }
+        .table-naming-example tbody td {
+            text-align: left !important;
         }
 
-        .doc-img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            cursor: default;
+        .table-changelog thead th {
+            text-align: center !important;
         }
-
-        .img-caption {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: 0.4rem;
+        .table-changelog tbody td:nth-child(1),
+        .table-changelog tbody td:nth-child(2),
+        .table-changelog tbody td:nth-child(3) {
+            text-align: center !important;
         }
-
-        /* Footnote Modal */
+        .table-changelog tbody td:nth-child(4) {
+            text-align: left !important;
+        }
+/* Footnote Modal */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -521,6 +416,30 @@
             font-size: 0.95rem;
             color: #334155;
             line-height: 1.6;
+        }
+
+        /* Single Image Container & Caption Centering */
+        .img-container {
+            margin: 1.5rem 0;
+            text-align: center;
+        }
+
+        .img-container img,
+        .doc-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            cursor: default;
+            display: inline-block;
+        }
+
+        .img-caption {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+            text-align: center;
         }
 
         /* Image Group Side-by-Side Flex Layout (80% Edge Scale) */
@@ -629,6 +548,65 @@
             text-align: left !important;
         }
 
+    
+        /* Copyable Text Block (v2.5) */
+        .copy-block {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            margin: 0.75rem 0;
+            overflow: hidden;
+        }
+
+        .copy-block-header {
+            background: #f1f5f9;
+            padding: 0.6rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            color: #334155;
+            font-size: 0.9rem;
+        }
+
+        .copy-btn {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #475569;
+            padding: 0.25rem 0.65rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            background: #f1f5f9;
+            color: var(--primary-color);
+            border-color: #94a3b8;
+        }
+
+        .copy-btn.copied {
+            background: #16a34a;
+            color: #ffffff;
+            border-color: #16a34a;
+        }
+
+        .copy-block-body {
+            padding: 1rem;
+            font-family: inherit;
+            white-space: pre-wrap;
+            word-break: break-all;
+            color: #1e293b;
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+
     </style>
 </head>
 <body>
@@ -660,7 +638,7 @@
             <header class="header">
                 <div class="header-container">
                     <h1 class="header-title">經濟部智慧財產局｜S170商標行政系統</h1>
-                    <div class="header-subtitle">商品服務暨中英彙編異動標準作業規範(v2.3)</div>
+                    <div class="header-subtitle">商品服務暨中英彙編異動標準作業規範(v2.5)</div>
                 </div>
             </header>
 
@@ -675,59 +653,59 @@
             <section id="sec-schedule" class="card">
                 <h2 class="section-title">貳、 時程安排</h2>
                 <p>考量本項作業具時效性，為避免作業時間過短產生錯誤，或無法如期公告，請務必嚴格遵照以下時程辦理：</p>
-                <table class="sop-table table-align-left table-schedule">
+                <table class="sop-table table-schedule">
                     <thead>
                         <tr>
-                            <th style="width: 32%; text-align: left;">執行事項</th>
-                            <th style="width: 34%; text-align: left;">上半年</th>
-                            <th style="width: 34%; text-align: left;">下半年</th>
+                            <th style="width: 32%; text-align: left !important;">執行事項</th>
+                            <th style="width: 34%; text-align: left !important;">上半年</th>
+                            <th style="width: 34%; text-align: left !important;">下半年</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="text-align: left;">匯出「新興商品清冊」<button class="fn-btn" onclick="openModal(1)" title="清冊資料來源為外界民眾於S282查詢商品名稱時...">[1]</button></td>
-                            <td style="text-align: left;">04/01匯出 (10/01~03/31清冊)</td>
-                            <td style="text-align: left;">10/01匯出 (04/01~09/30清冊)</td>
+                            <td style="text-align: left !important;">匯出「新興商品清冊」<button class="fn-btn" onclick="openModal(1)" title="清冊資料來源為外界民眾於S282查詢商品名稱時...">[1]</button></td>
+                            <td style="text-align: left !important;">04/01匯出 (10/01~03/31清冊)</td>
+                            <td style="text-align: left !important;">10/01匯出 (04/01~09/30清冊)</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">各科品改人員提供異動申請表<button class="fn-btn" onclick="openModal(2)" title="非硬性規定，係保障承辦人有足夠時間作業...">[2]</button></td>
-                            <td style="text-align: left;">05/10前提供第一版<br>05/20前陸續提供<br>05/21~05/31僅可修正</td>
-                            <td style="text-align: left;">11/10前提供第一版<br>11/20前陸續提供<br>11/21~11/30僅可修正</td>
+                            <td style="text-align: left !important;">各科品改人員提供異動申請表<button class="fn-btn" onclick="openModal(2)" title="非硬性規定，係保障承辦人有足夠時間作業...">[2]</button></td>
+                            <td style="text-align: left !important;">05/10前提供第一版<br>05/20前陸續提供<br>05/21~05/31僅可修正</td>
+                            <td style="text-align: left !important;">11/10前提供第一版<br>11/20前陸續提供<br>11/21~11/30僅可修正</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">異動文件作業<button class="fn-btn" onclick="openModal(3)" title="非硬性規定，考量文件作業完成後才開始系統作業...">[3]</button></td>
-                            <td style="text-align: left;">收到申請表~05/31</td>
-                            <td style="text-align: left;">收到申請表~11/30</td>
+                            <td style="text-align: left !important;">異動文件作業<button class="fn-btn" onclick="openModal(3)" title="非硬性規定，考量文件作業完成後才開始系統作業...">[3]</button></td>
+                            <td style="text-align: left !important;">收到申請表~05/31</td>
+                            <td style="text-align: left !important;">收到申請表~11/30</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">系統作業<button class="fn-btn" onclick="openModal(4)" title="非硬性規定，考量系統作業完成後...">[4]</button></td>
-                            <td style="text-align: left;">異動文件完成~06/05</td>
-                            <td style="text-align: left;">異動文件完成~12/05</td>
+                            <td style="text-align: left !important;">系統作業<button class="fn-btn" onclick="openModal(4)" title="非硬性規定，考量系統作業完成後...">[4]</button></td>
+                            <td style="text-align: left !important;">異動文件完成~06/05</td>
+                            <td style="text-align: left !important;">異動文件完成~12/05</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">公告文件作業</td>
-                            <td style="text-align: left;">公告文件完成~06/10</td>
-                            <td style="text-align: left;">公告文件完成~12/10</td>
+                            <td style="text-align: left !important;">公告文件作業</td>
+                            <td style="text-align: left !important;">公告文件完成~06/10</td>
+                            <td style="text-align: left !important;">公告文件完成~12/10</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">上簽<button class="fn-btn" onclick="openModal(6)" title="例如當06/10為星期五...">[6]</button></td>
-                            <td style="text-align: left;">06/10前</td>
-                            <td style="text-align: left;">12/10前</td>
+                            <td style="text-align: left !important;">上簽<button class="fn-btn" onclick="openModal(6)" title="例如當06/10為星期五...">[6]</button></td>
+                            <td style="text-align: left !important;">06/10前</td>
+                            <td style="text-align: left !important;">12/10前</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">預公告</td>
-                            <td style="text-align: left;">06/16</td>
-                            <td style="text-align: left;">12/16</td>
+                            <td style="text-align: left !important;">預公告</td>
+                            <td style="text-align: left !important;">06/16</td>
+                            <td style="text-align: left !important;">12/16</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">公告</td>
-                            <td style="text-align: left;">07/01</td>
-                            <td style="text-align: left;">01/01</td>
+                            <td style="text-align: left !important;">公告</td>
+                            <td style="text-align: left !important;">07/01</td>
+                            <td style="text-align: left !important;">01/01</td>
                         </tr>
                         <tr>
-                            <td style="text-align: left;">加碼/移碼</td>
-                            <td style="text-align: left;">公告後的假日</td>
-                            <td style="text-align: left;">公告後的假日</td>
+                            <td style="text-align: left !important;">加碼/移碼</td>
+                            <td style="text-align: left !important;">公告後的假日</td>
+                            <td style="text-align: left !important;">公告後的假日</td>
                         </tr>
                     </tbody>
                 </table>
@@ -762,7 +740,6 @@
                     <span class="lvl-num">3.</span>
                     <div class="lvl-text">將報表內商品依出現次數由多至少排序</div>
                 </div>
-
                 <div class="lvl-item lvl-4">
                     <span class="lvl-num">4.</span>
                     <div class="lvl-text">e-mail報表</div>
@@ -868,37 +845,37 @@
 
                 <div class="lvl-block-5">
                     <p style="font-weight: 600; margin-bottom: 0.35rem;">例如：</p>
-                    <table class="sop-table example-table table-naming-example">
+                    <table class="sop-table table-naming-example">
                         <thead>
                             <tr>
-                                <th style="width: 50%; text-align: center;">情境</th>
-                                <th style="width: 50%; text-align: center;">範例檔案名稱</th>
+                                <th style="width: 50%; text-align: center !important;">情境</th>
+                                <th style="width: 50%; text-align: center !important;">範例檔案名稱</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style="text-align: left;">審查3科陳杏映，於115年6月5日寄出第1版</td>
-                                <td style="text-align: left;"><code>審3科_1150605_陳杏映_v1.0</code></td>
+                                <td style="text-align: left !important;">審查3科陳杏映，於115年6月5日寄出第1版</td>
+                                <td style="text-align: left !important;"><code>審3科_1150605_陳杏映_v1.0</code></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">維護人員曾沛恩，於當日檢視後修正用語及錯誤</td>
-                                <td style="text-align: left;"><code>審3科_1150605_曾沛恩_v1.1</code></td>
+                                <td style="text-align: left !important;">維護人員曾沛恩，於當日檢視後修正用語及錯誤</td>
+                                <td style="text-align: left !important;"><code>審3科_1150605_曾沛恩_v1.1</code></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">審查3科陳杏映，於115年6月6日檢視後，又更正部分錯誤</td>
-                                <td style="text-align: left;"><code>審3科_1150605_陳杏映_v1.2</code></td>
+                                <td style="text-align: left !important;">審查3科陳杏映，於115年6月6日檢視後，又更正部分錯誤</td>
+                                <td style="text-align: left !important;"><code>審3科_1150605_陳杏映_v1.2</code></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">審查3科陳杏映，於115年6月8日再增加新需求<button class="fn-btn" onclick="openModal(7)" title="因內容已非單純修正錯誤，故推進本版號第1個位數">[7]</button></td>
-                                <td style="text-align: left;"><code>審3科_1150608_陳杏映_v2.0</code></td>
+                                <td style="text-align: left !important;">審查3科陳杏映，於115年6月8日再增加新需求<button class="fn-btn" onclick="openModal(7)" title="因內容已非單純修正錯誤，故推進本版號第1個位數">[7]</button></td>
+                                <td style="text-align: left !important;"><code>審3科_1150608_陳杏映_v2.0</code></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">維護人員曾沛恩，於115年6月8日視後修正用語及錯誤，並與v1.2合併</td>
-                                <td style="text-align: left;"><code>審3科_1150605_曾沛恩_v2.1</code></td>
+                                <td style="text-align: left !important;">維護人員曾沛恩，於115年6月8日視後修正用語及錯誤，並與v1.2合併</td>
+                                <td style="text-align: left !important;"><code>審3科_1150605_曾沛恩_v2.1</code></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">確認無誤且已不再追加需求，將「審3科_1150605_曾沛恩_v2.1」改為最終版</td>
-                                <td style="text-align: left;"><code>審3科_1150605_曾沛恩_final</code></td>
+                                <td style="text-align: left !important;">確認無誤且已不再追加需求，將「審3科_1150605_曾沛恩_v2.1」改為最終版</td>
+                                <td style="text-align: left !important;"><code>審3科_1150605_曾沛恩_final</code></td>
                             </tr>
                         </tbody>
                     </table>
@@ -916,6 +893,7 @@
                     <span class="lvl-num">(2)</span>
                     <div class="lvl-text">若為新增需求，併入原申請表整合成該科的完整需求</div>
                 </div>
+
                 <div class="lvl-item lvl-4">
                     <span class="lvl-num">3.</span>
                     <div class="lvl-text">向所有商品異動相關人員確認最終版本</div>
@@ -1329,13 +1307,14 @@
 
                 <div class="lvl-item lvl-3">
                     <span class="lvl-num">(五)</span>
-                    <div class="lvl-text">
-                        <div>歷次異動資料、開放資料檔案</div>
-                        <p style="margin-top: 0.25rem; font-weight: normal; color: #334155;">此二檔案係所有歷年的異動紀錄，其中「歷次異動資料」依類別分為45個檔案、「開放資料」則將45類依序合併在同一檔案中</p>
-                    </div>
+                    <div class="lvl-text">歷次異動資料、開放資料檔案</div>
                 </div>
                 <div class="lvl-item lvl-4">
                     <span class="lvl-num">1.</span>
+                    <div class="lvl-text">此二檔案係所有歷年的異動紀錄，其中「歷次異動資料」依類別分為45個檔案、「開放資料」則將45類依序合併在同一檔案中</div>
+                </div>
+                <div class="lvl-item lvl-4">
+                    <span class="lvl-num">2.</span>
                     <div class="lvl-text">將檔案內容分別做以下處理</div>
                 </div>
                 <div class="lvl-item lvl-5">
@@ -1371,40 +1350,40 @@
                     <span class="lvl-num">1.</span>
                     <div class="lvl-text">將異動的系統作業全數完成後，先開啟S282→商品服務名稱分類查詢頁面作為預備動作</div>
                 </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(1)</span>
                     <div class="lvl-text">點選 <span class="ui-btn">e網通</span> → <span class="ui-btn">系統專區</span> → <span class="ui-btn">商標遠端檢索系統_後台</span> → <span class="ui-btn">資料維護</span> → <span class="ui-btn">6.共用代碼檔維護作業</span></div>
                 </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">3.</span>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(2)</span>
                     <div class="lvl-text">點選 <span class="ui-btn">BUTTON_CONTROL按鈕顯示控管</span>，於彈出視窗下方點選 <code>printAllGoodsCodeByA</code> 處，可將代碼值相關資訊帶入上方控制參數調整欄位</div>
                 </div>
-                <div class="lvl-block-4">
+                <div class="lvl-block-5">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1HbtBVZdy03Wo3Gs_T6ve9IQq43zsQqHV" alt="BUTTON_CONTROL按鈕顯示控管" class="doc-img">
                         <div class="img-caption">圖：BUTTON_CONTROL 按鈕顯示控管設定畫面</div>
                     </div>
                 </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">4.</span>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(3)</span>
                     <div class="lvl-text">點選 <span class="ui-btn">修改</span>，前端顯示調整為顯示後，點選 <span class="ui-btn">確定</span></div>
                 </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">5.</span>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(4)</span>
                     <div class="lvl-text">立刻重新整理S282視窗，可看到畫面中多出 <span class="ui-btn">下載新商品服務名稱全類按鈕</span></div>
                 </div>
-                <div class="lvl-block-4">
+                <div class="lvl-block-5">
                     <div class="img-container">
                         <img src="https://lh3.googleusercontent.com/d/1Gqn8ugpefyKbrDlxmal840pLn2K5YUdi" alt="下載新商品服務名稱全類按鈕" class="doc-img">
                         <div class="img-caption">圖：S282 前端顯示全類下載按鈕</div>
                     </div>
                 </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">6.</span>
+                <div class="lvl-item lvl-5">
+                    <span class="lvl-num">(5)</span>
                     <div class="lvl-text">將原排序、筆畫排序之WORD檔下載後，立刻將BUTTON_CONTROL按鈕顯示控管功能調整回隱藏<button class="fn-btn" onclick="openModal(15)" title="在尚未正式預公告前，不應讓外界看到相關資訊...">[15]</button></div>
                 </div>
                 <div class="lvl-item lvl-4">
-                    <span class="lvl-num">7.</span>
+                    <span class="lvl-num">2.</span>
                     <div class="lvl-text">寄給品推小組承辦人員</div>
                 </div>
 
@@ -1511,26 +1490,23 @@
 
                 <div class="lvl-item lvl-3">
                     <span class="lvl-num">(二)</span>
-                    <div class="lvl-text">作業方式</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
                     <div class="lvl-text">於局網站張貼預公告內容</div>
                 </div>
                 <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
+                    <span class="lvl-num">1.</span>
                     <div class="lvl-text">自局網站後台，點選 <span class="ui-btn">資料管理</span> → <span class="ui-btn">資料上稿</span>，右側彈出資料上稿選單</div>
                 </div>
                 <div class="lvl-item lvl-4">
-                    <span class="lvl-num">3.</span>
+                    <span class="lvl-num">2.</span>
                     <div class="lvl-text">點選 <span class="ui-btn">資料上稿</span> → <span class="ui-btn">經濟部智慧財產局</span> → <span class="ui-btn">最新消息</span> → <span class="ui-btn">布告欄</span>，轉跳至資料上稿頁面</div>
                 </div>
                 <div class="lvl-item lvl-4">
-                    <span class="lvl-num">4.</span>
+                    <span class="lvl-num">3.</span>
                     <div class="lvl-text">點擊 <span class="ui-btn">新增上稿</span>，設定預公開當日上午08:30由系統自動於指定時間發布</div>
                 </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">5.</span>
+
+                <div class="lvl-item lvl-3">
+                    <span class="lvl-num">(三)</span>
                     <div class="lvl-text">當日上午到達辦公室後，即可再次開啟S282下載新商品服務名稱全類按鈕</div>
                 </div>
 
@@ -1551,252 +1527,238 @@
             </section>
 
             <!-- Section 3: 申請表內容檢視與調整規範 (層次1: 參) -->
-            <section id="sec-review" class="card">
-                <h2 class="section-title">參、 申請表內容檢視與調整規範</h2>
-                <p>每半年之商品/服務定期異動業務，對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，其中又以異動文件之判讀、除錯與處理最為繁瑣。故除訂定標準作業流程外，針對承辦人異動文件作業進行標準性規範，期能降低未來承辦人出錯機率與交接之困難度</p>
-                <p style="margin-top: 0.75rem;">本章分為「判讀申請表之需求與除錯」、「申請表填寫規範」2大部分，收到申請表後，應逐一檢查以下各項：</p>
+            <section class="card" id="sec-review">
+<h2 class="section-title">參、 申請表內容檢視與調整規範</h2>
+<p>每半年之商品/服務定期異動業務，對後續半年之審查、快軌判定、規費計算等多方面影響甚鉅，且部分異動作業執行後將無法/難以回復異動前狀態，其中又以異動文件之判讀、除錯與處理最為繁瑣。故除訂定標準作業流程外，針對承辦人異動文件作業進行標準性規範，期能降低未來承辦人出錯機率與交接之困難度</p>
+<p style="margin-top: 0.75rem;">本章分為「判讀申請表之需求與除錯」、「申請表填寫規範」2大部分，收到申請表後，應逐一檢查以下各項：</p>
+<!-- Sub-section 一 (層次2) -->
+<div class="lvl-2">
+<span class="lvl-num">一、</span>
+<span class="lvl-text">判讀申請表與除錯</span>
+</div>
+<p style="margin-left: 1em; margin-bottom: 0.5rem; color: #334155;">收到申請表後，依申請需求的性質，分別檢查以下各事項</p>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(一)</span>
+<div class="lvl-text">新增碼</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">1.</span>
+<div class="lvl-text">商品碼是否已被使用</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <!-- Sub-section 一 (層次2) -->
-                <div class="lvl-2">
-                    <span class="lvl-num">一、</span>
-                    <span class="lvl-text">判讀申請表與除錯</span>
-                </div>
-                <p style="margin-left: 1em; margin-bottom: 0.5rem; color: #334155;">收到申請表後，依申請需求的性質，分別檢查以下各事項</p>
+<div class="lvl-text">除已正式使用之商品碼可能重複，本次不同科別之異動項目亦可能重複取碼</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">2.</span>
+<div class="lvl-text">已編碼商品中是否有性質接近之商品，可新增為10碼</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(一)</span>
-                    <div class="lvl-text">新增碼</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">商品碼是否已被使用</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">除已正式使用之商品碼可能重複，本次不同科別之異動項目亦可能重複取碼</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
-                    <div class="lvl-text">已編碼商品中是否有性質接近之商品，可新增為10碼</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">同一小類組之下僅有3碼數字可使用，意即僅有999個9碼商品。過去新增商品時未考慮商品碼使用速度問題，導致部分類別9碼使用過快，若9碼取號完畢將需要面臨商品碼大幅度重整問題，故盡可能以10碼方式減緩使用速度</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">3.</span>
-                    <div class="lvl-text">是否隱藏</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">4.</span>
-                    <div class="lvl-text">是否公告</div>
-                </div>
+<div class="lvl-text">同一小類組之下僅有3碼數字可使用，意即僅有999個9碼商品。過去新增商品時未考慮商品碼使用速度問題，導致部分類別9碼使用過快，若9碼取號完畢將需要面臨商品碼大幅度重整問題，故盡可能以10碼方式減緩使用速度</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">3.</span>
+<div class="lvl-text">是否隱藏</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">4.</span>
+<div class="lvl-text">是否公告</div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(二)</span>
+<div class="lvl-text">刪除碼</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">1.</span>
+<div class="lvl-text">是否有刪除後之移碼位置</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(二)</span>
-                    <div class="lvl-text">刪除碼</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">是否有刪除後之移碼位置</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">刪除9/10碼時必須移碼</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
-                    <div class="lvl-text">刪除4/6碼時須特別注意，該4/6碼本身亦可能有案件，且該4/6碼下可能尚有未刪除之9/10碼需一併處理</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">3.</span>
-                    <div class="lvl-text">移碼原則以9/10碼移至9/10碼，避免移至4/6碼<button class="fn-btn" onclick="openModal(16)" title="例如：粉底、面膜、唇膏...歷次異動資料">[16]</button>，若申請表中有此情形，務必向品改、該科科長及品推高審確認</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">4.</span>
-                    <div class="lvl-text">是否涉及公開類似關係</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">品改經常忽略之項目，若涉有公開類似關係，需一併調整4/6碼備註</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">5.</span>
-                    <div class="lvl-text">是否隱藏</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">6.</span>
-                    <div class="lvl-text">是否公告</div>
-                </div>
+<div class="lvl-text">刪除9/10碼時必須移碼</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">2.</span>
+<div class="lvl-text">刪除4/6碼時須特別注意，該4/6碼本身亦可能有案件，且該4/6碼下可能尚有未刪除之9/10碼需一併處理</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">3.</span>
+<div class="lvl-text">移碼原則以9/10碼移至9/10碼，避免移至4/6碼<button class="fn-btn" onclick="openModal(16)" title="例如：粉底、面膜、唇膏...歷次異動資料">[16]</button>，若申請表中有此情形，務必向品改、該科科長及品推高審確認</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">4.</span>
+<div class="lvl-text">是否涉及公開類似關係</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(三)</span>
-                    <div class="lvl-text">公開/隱藏調整</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">是否涉及公開類似關係</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">品改經常忽略之項目，若涉有類似關係，於公開/隱藏商品碼可能會使隱藏之類似關係轉為公開，須確認是否同時公告調整4/6碼之備註</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
-                    <div class="lvl-text"><strong>應公告</strong></div>
-                </div>
+<div class="lvl-text">品改經常忽略之項目，若涉有公開類似關係，需一併調整4/6碼備註</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">5.</span>
+<div class="lvl-text">是否隱藏</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">6.</span>
+<div class="lvl-text">是否公告</div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(三)</span>
+<div class="lvl-text">公開/隱藏調整</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">1.</span>
+<div class="lvl-text">是否涉及公開類似關係</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(四)</span>
-                    <div class="lvl-text">名稱異動</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">是否涉及公開類似關係</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">品改經常忽略之項目，若涉有公開類似關係，需一併調整4/6碼備註</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
-                    <div class="lvl-text">是否公告</div>
-                </div>
+<div class="lvl-text">品改經常忽略之項目，若涉有類似關係，於公開/隱藏商品碼可能會使隱藏之類似關係轉為公開，須確認是否同時公告調整4/6碼之備註</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">2.</span>
+<div class="lvl-text"><strong>應公告</strong></div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(四)</span>
+<div class="lvl-text">名稱異動</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">1.</span>
+<div class="lvl-text">是否涉及公開類似關係</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(五)</span>
-                    <div class="lvl-text">類似關係調整</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text"><strong>類似關係必定2個為一組</strong></div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">品改經常忽略之項目，新增A、B類似關係時，申請表中常僅公告A、或A上層4/6碼之備註調整，忽略B上層4/6碼亦須公告備註調整</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
-                    <div class="lvl-text">特定商品/服務之類似關係，其備註位於上層4/6碼</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">3.</span>
-                    <div class="lvl-text">是否隱藏</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">4.</span>
-                    <div class="lvl-text">是否公告</div>
-                </div>
+<div class="lvl-text">品改經常忽略之項目，若涉有公開類似關係，需一併調整4/6碼備註</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">2.</span>
+<div class="lvl-text">是否公告</div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(五)</span>
+<div class="lvl-text">類似關係調整</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">1.</span>
+<div class="lvl-text"><strong>類似關係必定2個為一組</strong></div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <!-- Sub-section 二 (層次2) -->
-                <div class="lvl-2">
-                    <span class="lvl-num">二、</span>
-                    <span class="lvl-text">申請表填寫規範</span>
-                </div>
+<div class="lvl-text">品改經常忽略之項目，新增A、B類似關係時，申請表中常僅公告A、或A上層4/6碼之備註調整，忽略B上層4/6碼亦須公告備註調整</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">2.</span>
+<div class="lvl-text">特定商品/服務之類似關係，其備註位於上層4/6碼</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">3.</span>
+<div class="lvl-text">是否隱藏</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">4.</span>
+<div class="lvl-text">是否公告</div>
+</div>
+<!-- Sub-section 二 (層次2) -->
+<div class="lvl-2">
+<span class="lvl-num">二、</span>
+<span class="lvl-text">申請表填寫規範</span>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(一)</span>
+<div class="lvl-text">類別</div>
+</div>
+<div class="lvl-item lvl-4">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(一)</span>
-                    <div class="lvl-text">類別</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">2碼半形數字<button class="fn-btn" onclick="openModal(17)" title="因公報均為2碼，故第1類至第9類應填寫01至09">[17]</button></div>
-                </div>
+<div class="lvl-text">2碼半形數字<button class="fn-btn" onclick="openModal(17)" title="因公報均為2碼，故第1類至第9類應填寫01至09">[17]</button></div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(二)</span>
+<div class="lvl-text">商品代碼</div>
+</div>
+<div class="lvl-item lvl-4">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(二)</span>
-                    <div class="lvl-text">商品代碼</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">4、6、9碼半形數字，或10碼半形數字與英文<button class="fn-btn" onclick="openModal(18)" title="第1類至第9類，前2碼應填寫01至09">[18]</button></div>
-                </div>
+<div class="lvl-text">4、6、9碼半形數字，或10碼半形數字與英文<button class="fn-btn" onclick="openModal(18)" title="第1類至第9類，前2碼應填寫01至09">[18]</button></div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(三)</span>
+<div class="lvl-text">修正前資訊</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">1.</span>
+<div class="lvl-text">是否隱藏</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(三)</span>
-                    <div class="lvl-text">修正前資訊</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">是否隱藏</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">不填寫或填寫「○」</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
-                    <div class="lvl-text">修正前商品/服務名稱（中文）</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">依原有名稱</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">3.</span>
-                    <div class="lvl-text">修正前商品/服務名稱（英文）</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">依原有名稱</div>
-                </div>
+<div class="lvl-text">不填寫或填寫「○」</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">2.</span>
+<div class="lvl-text">修正前商品/服務名稱（中文）</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(四)</span>
-                    <div class="lvl-text">修正後資訊</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">是否隱藏</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">不填寫或填寫「○」</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">2.</span>
-                    <div class="lvl-text">修正後商品/服務名稱（中文）</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">全形中文，例外可用全形英文、符號<button class="fn-btn" onclick="openModal(19)" title="注意不可使用分號...">[19]</button></div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">3.</span>
-                    <div class="lvl-text">修正後商品/服務名稱（英文）</div>
-                </div>
-                <div class="lvl-item lvl-5">
-                    <span class="lvl-num">(1)</span>
-                    <div class="lvl-text">小寫半形英文，專有名詞等情況可使用大寫<button class="fn-btn" onclick="openModal(20)" title="過去建置時未按統一規則...">[20]</button>，例外可用半形符號</div>
-                </div>
+<div class="lvl-text">依原有名稱</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">3.</span>
+<div class="lvl-text">修正前商品/服務名稱（英文）</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(五)</span>
-                    <div class="lvl-text">尼斯碼(非必要)</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">6碼半形數字</div>
-                </div>
+<div class="lvl-text">依原有名稱</div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(四)</span>
+<div class="lvl-text">修正後資訊</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">1.</span>
+<div class="lvl-text">是否隱藏</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(六)</span>
-                    <div class="lvl-text">異動附註</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">依固定用語撰寫<button class="fn-btn" onclick="openModal(21)" title="詳細文字請參考用語表">[21]</button>，詳參異動用語表，以分號區別不同的異動事項</div>
-                </div>
+<div class="lvl-text">不填寫或填寫「○」</div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">2.</span>
+<div class="lvl-text">修正後商品/服務名稱（中文）</div>
+</div>
+<div class="lvl-item lvl-5">
 
-                <div class="lvl-item lvl-3">
-                    <span class="lvl-num">(七)</span>
-                    <div class="lvl-text">公告</div>
-                </div>
-                <div class="lvl-item lvl-4">
-                    <span class="lvl-num">1.</span>
-                    <div class="lvl-text">不填寫或填寫「○」</div>
-                </div>
-            </section>
+<div class="lvl-text">全形中文，例外可用全形英文、符號<button class="fn-btn" onclick="openModal(19)" title="注意不可使用分號...">[19]</button></div>
+</div>
+<div class="lvl-item lvl-4">
+<span class="lvl-num">3.</span>
+<div class="lvl-text">修正後商品/服務名稱（英文）</div>
+</div>
+<div class="lvl-item lvl-5">
+
+<div class="lvl-text">小寫半形英文，專有名詞等情況可使用大寫<button class="fn-btn" onclick="openModal(20)" title="過去建置時未按統一規則...">[20]</button>，例外可用半形符號</div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(五)</span>
+<div class="lvl-text">尼斯碼(非必要)</div>
+</div>
+<div class="lvl-item lvl-4">
+
+<div class="lvl-text">6碼半形數字</div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(六)</span>
+<div class="lvl-text">異動附註</div>
+</div>
+<div class="lvl-item lvl-4">
+
+<div class="lvl-text">依固定用語撰寫<button class="fn-btn" onclick="openModal(21)" title="詳細文字請參考用語表">[21]</button>，詳參異動用語表，以分號區別不同的異動事項</div>
+</div>
+<div class="lvl-item lvl-3">
+<span class="lvl-num">(七)</span>
+<div class="lvl-text">公告</div>
+</div>
+<div class="lvl-item lvl-4">
+
+<div class="lvl-text">不填寫或填寫「○」</div>
+</div>
+</section>
 
             <!-- Section 4: 異動用語表 (層次1: 肆) -->
             <section id="sec-terms" class="card">
@@ -2056,57 +2018,57 @@
             <!-- Section 5: 編修紀錄 -->
             <section id="sec-changelog" class="card">
                 <h2 class="section-title">編修紀錄</h2>
-                <table class="sop-table changelog-table table-changelog">
+                <table class="sop-table table-changelog">
                     <thead>
                         <tr>
-                            <th style="width: 10%; text-align: center;">序號</th>
-                            <th style="width: 15%; text-align: center;">編修日期</th>
-                            <th style="width: 15%; text-align: center;">編修者</th>
-                            <th style="width: 60%; text-align: center;">編修重點</th>
+                            <th style="width: 10%; text-align: center !important;">序號</th>
+                            <th style="width: 15%; text-align: center !important;">編修日期</th>
+                            <th style="width: 15%; text-align: center !important;">編修者</th>
+                            <th style="width: 60%; text-align: center !important;">編修重點</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td style="text-align: center;">1</td>
-                            <td style="text-align: center;">111.07.26</td>
-                            <td style="text-align: center;">曾沛恩</td>
-                            <td style="text-align: left;">初版，新增階層1主題簡介、匯出「新興商品清冊」、異動文件作業</td>
+                            <td style="text-align: center !important;">1</td>
+                            <td style="text-align: center !important;">111.07.26</td>
+                            <td style="text-align: center !important;">曾沛恩</td>
+                            <td style="text-align: left !important;">初版，新增階層1主題簡介、匯出「新興商品清冊」、異動文件作業</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center;">2</td>
-                            <td style="text-align: center;">111.07.28</td>
-                            <td style="text-align: center;">曾沛恩</td>
-                            <td style="text-align: left;">新增階層1主題系統作業</td>
+                            <td style="text-align: center !important;">2</td>
+                            <td style="text-align: center !important;">111.07.28</td>
+                            <td style="text-align: center !important;">曾沛恩</td>
+                            <td style="text-align: left !important;">新增階層1主題系統作業</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center;">3</td>
-                            <td style="text-align: center;">114.06.10</td>
-                            <td style="text-align: center;">曾沛恩</td>
-                            <td style="text-align: left;">新增階層1主題時程安排，調整匯出新興商品清冊、異動文件作業、系統作業為階層2主題</td>
+                            <td style="text-align: center !important;">3</td>
+                            <td style="text-align: center !important;">114.06.10</td>
+                            <td style="text-align: center !important;">曾沛恩</td>
+                            <td style="text-align: left !important;">新增階層1主題時程安排，調整匯出新興商品清冊、異動文件作業、系統作業為階層2主題</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center;">4</td>
-                            <td style="text-align: center;">115.03.05</td>
-                            <td style="text-align: center;">曾沛恩</td>
-                            <td style="text-align: left;">新增階層1主題申請表內容檢視與調整規範</td>
+                            <td style="text-align: center !important;">4</td>
+                            <td style="text-align: center !important;">115.03.05</td>
+                            <td style="text-align: center !important;">曾沛恩</td>
+                            <td style="text-align: left !important;">新增階層1主題申請表內容檢視與調整規範</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center;">5</td>
-                            <td style="text-align: center;">115.06.25</td>
-                            <td style="text-align: center;">曾沛恩</td>
-                            <td style="text-align: left;">新增階層1主題異動用語表</td>
+                            <td style="text-align: center !important;">5</td>
+                            <td style="text-align: center !important;">115.06.25</td>
+                            <td style="text-align: center !important;">曾沛恩</td>
+                            <td style="text-align: left !important;">新增階層1主題異動用語表</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center;">6</td>
-                            <td style="text-align: center;">115.09.25</td>
-                            <td style="text-align: center;">曾沛恩</td>
-                            <td style="text-align: left;">文件首次html化</td>
+                            <td style="text-align: center !important;">6</td>
+                            <td style="text-align: center !important;">115.09.25</td>
+                            <td style="text-align: center !important;">曾沛恩</td>
+                            <td style="text-align: left !important;">文件首次html化</td>
                         </tr>
                         <tr>
-                            <td style="text-align: center;">7</td>
-                            <td style="text-align: center;">115.10.04</td>
-                            <td style="text-align: center;">曾沛恩</td>
-                            <td style="text-align: left;">階層2主題匯出「新興商品清冊」增加e-mail例稿、階層2主題公告文件作業增加公告文字例稿、階層2主題上簽增加公文內文、預公告稿例稿</td>
+                            <td style="text-align: center !important;">7</td>
+                            <td style="text-align: center !important;">115.10.04</td>
+                            <td style="text-align: center !important;">曾沛恩</td>
+                            <td style="text-align: left !important;">階層2主題匯出「新興商品清冊」增加e-mail例稿、階層2主題公告文件作業增加公告文字例稿、階層2主題上簽增加公文內文、預公告稿例稿</td>
                         </tr>
                     </tbody>
                 </table>
